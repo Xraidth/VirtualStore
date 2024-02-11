@@ -13,7 +13,7 @@ namespace DB.Models
         public int SaleId { get; set; }
         public string UserName { get; set; } = null!;
         public decimal Total { get; set; }
-
+        public DateTime SaleDay { get; set; }
         public virtual ICollection<SalesLine> SalesLines { get; set; }
     }
 }

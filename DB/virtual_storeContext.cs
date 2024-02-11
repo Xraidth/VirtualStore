@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Configuration;
 using DB.Models;
+using System.Configuration.Provider;
+using Microsoft.Extensions.Configuration;
+
 
 namespace DB
 {
@@ -27,10 +30,30 @@ namespace DB
         {
             if (!optionsBuilder.IsConfigured)
             {
-                string connectionStrign = ConfigurationManager.ConnectionStrings["VirtualStoreConnection"].ConnectionString;
-                optionsBuilder.UseMySql(connectionStrign, ServerVersion.Parse("8.0.36-mysql"));
+                IConfigurationRoot configuration = new ConfigurationBuilder()
+           .AddJsonFile("appsettings.json")
+           .Build();
+
+                string connectionString = configuration.GetConnectionString("MyDatabaseConnection");
+                optionsBuilder.UseMySql(connectionString, ServerVersion.Parse("8.0.36-mysql"));
             }
         }
+
+        public static virtual_storeContext CreateContext()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<virtual_storeContext>();
+
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+           .AddJsonFile("appsettings.json")
+           .Build();
+
+            string connectionString = configuration.GetConnectionString("MyDatabaseConnection");
+            optionsBuilder.UseMySql(connectionString, ServerVersion.Parse("8.0.36-mysql"));
+
+            return new virtual_storeContext(optionsBuilder.Options);
+        }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -65,6 +88,10 @@ namespace DB
                 entity.Property(e => e.UserName)
                     .HasMaxLength(50)
                     .HasColumnName("user_name");
+                entity.Property(e => e.SaleDay)
+                    .HasColumnType("date")
+                    .HasColumnName("sale_day");
+
             });
 
             modelBuilder.Entity<SalesLine>(entity =>
@@ -77,11 +104,15 @@ namespace DB
 
                 entity.HasIndex(e => e.SaleId, "fk_sale_id_sales");
 
+                entity.HasIndex(e => e.ProductId, "fk_product_id_products");
+
                 entity.Property(e => e.LineId)
                     .ValueGeneratedOnAdd()
                     .HasColumnName("line_id");
 
                 entity.Property(e => e.SaleId).HasColumnName("sale_id");
+                
+                entity.Property(e => e.ProductId).HasColumnName("product_id");
 
                 entity.Property(e => e.Amount).HasColumnName("amount");
 
@@ -94,6 +125,13 @@ namespace DB
                     .HasForeignKey(d => d.SaleId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_sale_id_sales");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany() 
+                    .HasForeignKey(d => d.ProductId) 
+                    .OnDelete(DeleteBehavior.Cascade) 
+                    .HasConstraintName("fk_product_id_products"); 
+
             });
 
             modelBuilder.Entity<User>(entity =>

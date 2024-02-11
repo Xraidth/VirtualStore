@@ -1,12 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Entities
+namespace DB.Models
 {
-    internal class Product
+    public partial class Product
     {
+        public int ProductId { get; set; }
+        public string ProductName { get; set; } = null!;
+        public decimal ProductPrice { get; set; }
+
+        public Product()
+        {
+            
+        }
+
+        public Product(string product_name, decimal product_price)
+        {
+            ProductName = product_name;
+            ProductPrice = product_price;
+        }
     }
+
+   
+
 }
