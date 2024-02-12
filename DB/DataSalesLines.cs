@@ -30,9 +30,10 @@ namespace DB
             using (var context = virtual_storeContext.CreateContext())
             {
                 var sales_lineAdd = GetOne(sales_line.SaleId, sales_line.LineId);
-                if (sales_lineAdd == null) { 
-                context.SalesLines.Add(sales_line);
-                context.SaveChanges();
+                if (sales_lineAdd == null) {
+                    context.SalesLines.Attach(sales_line);
+                    context.Entry(sales_line).State = EntityState.Added;
+                    context.SaveChanges();
                 }
             }
         }
@@ -41,9 +42,10 @@ namespace DB
             using (var context = virtual_storeContext.CreateContext())
             {
                 var sale_lineDel = GetOne(sale_line.SaleId, sale_line.LineId);
-                if (sale_lineDel != null) { 
-                context.SalesLines.Remove(sale_lineDel);
-                context.SaveChanges();
+                if (sale_lineDel != null) {
+                    context.SalesLines.Attach(sale_lineDel);
+                    context.Entry(sale_lineDel).State = EntityState.Deleted;
+                    context.SaveChanges();
                 }
             }
         }

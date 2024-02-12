@@ -30,9 +30,10 @@ namespace DB
             using (var context = virtual_storeContext.CreateContext())
             {
                 var proAdd = GetOne(pro.ProductId);
-                if (proAdd == null) { 
-                context.Products.Add(pro);
-                context.SaveChanges();
+                if (proAdd == null) {
+                    context.Products.Attach(pro);
+                    context.Entry(pro).State = EntityState.Added;
+                    context.SaveChanges();
                 }
             }
         }
@@ -41,9 +42,10 @@ namespace DB
             using (var context = virtual_storeContext.CreateContext())
             {
                 var proDel = GetOne(pro.ProductId);
-                if (proDel != null) { 
-                context.Products.Remove(proDel);
-                context.SaveChanges();
+                if (proDel != null) {
+                    context.Products.Attach(proDel);
+                    context.Entry(proDel).State = EntityState.Deleted;
+                    context.SaveChanges();
                 }
             }
         }

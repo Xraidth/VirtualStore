@@ -30,20 +30,22 @@ namespace DB
             using (var context = virtual_storeContext.CreateContext())
             {
                 var saleAdd = GetOne(sale.SaleId);
-                if (saleAdd == null) { 
-                context.Sales.Add(sale);
-                context.SaveChanges();
+                if (saleAdd == null) {
+                    context.Sales.Attach(sale);
+                    context.Entry(sale).State = EntityState.Added;
+                    context.SaveChanges();
                 }
             }
         }
-        static public void DeleteOne(Sale sale)
+        static public void DeleteOne(int id)
         {
             using (var context = virtual_storeContext.CreateContext())
             {
-                var saleDel = GetOne(sale.SaleId);
-                if (saleDel != null) { 
-                context.Sales.Remove(saleDel);
-                context.SaveChanges();
+                var saleDel = GetOne(id);
+                if (saleDel != null) {
+                    context.Sales.Attach(saleDel);
+                    context.Entry(saleDel).State = EntityState.Deleted;
+                    context.SaveChanges();
                 }
             }
         }
@@ -55,8 +57,8 @@ namespace DB
                     var saleMod = GetOne(sale.SaleId);  
                     saleMod.Total = total;
                     saleMod.SaleDay = sale_day;
-                    saleMod.UserName = usu.UserName;
-
+                    saleMod.User = usu;
+                saleMod.UserId = usu.UserId;    
                     context.Sales.Attach(saleMod);
                     context.Entry(saleMod).State = EntityState.Modified;
                     context.SaveChanges();

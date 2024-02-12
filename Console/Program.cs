@@ -1,5 +1,6 @@
 ﻿using DB;
 using DB.Models;
+using Mysqlx.Crud;
 using System;
 
 namespace MiProyecto
@@ -9,21 +10,26 @@ namespace MiProyecto
         static void Main(string[] args)
         {
 
-            
 
-            foreach (var pro in DataProduct.GetAll() )
+            var newSL = new SalesLine(DataSale.GetOne(2), DataProduct.GetOne(1), 1);
+
+            DataSalesLines.Insert(newSL);
+          
+          
+            foreach (var s in DataSalesLines.GetAll() )
             {
-                Console.WriteLine(pro.ProductId.ToString() + "\t" + pro.ProductName + "\t" + pro.ProductPrice.ToString());
+                Console.WriteLine(s.LineId.ToString()+"\t"+ s.SaleId.ToString()+"\t"+s.ProductId.ToString()+"\t"+ s.SubTotal.ToString()+"\t"+ s.Amount.ToString());
             }
+          
 
            
 
-            
 
-         
-            
-            
-          
+
+
+
+
+
 
 
             Console.WriteLine("Presiona cualquier tecla para salir...");

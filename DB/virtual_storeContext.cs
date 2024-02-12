@@ -81,16 +81,23 @@ namespace DB
 
                 entity.Property(e => e.SaleId).HasColumnName("sale_id");
 
+                entity.HasIndex(e => e.UserId, "fk_user_id_users");
+
                 entity.Property(e => e.Total)
                     .HasPrecision(9, 3)
                     .HasColumnName("total");
 
-                entity.Property(e => e.UserName)
-                    .HasMaxLength(50)
-                    .HasColumnName("user_name");
+                entity.Property(e => e.UserId).HasColumnName("user_id");
+
                 entity.Property(e => e.SaleDay)
                     .HasColumnType("date")
                     .HasColumnName("sale_day");
+
+                entity.HasOne(d => d.User)
+                  .WithMany()
+                  .HasForeignKey(d => d.UserId)
+                  .OnDelete(DeleteBehavior.Cascade)
+                  .HasConstraintName("fk_user_id_users");
 
             });
 

@@ -30,9 +30,10 @@ namespace DB
             using (var context = virtual_storeContext.CreateContext())
             {
                 var usuAdd = GetOne(usu.UserId);
-                if (usuAdd == null) { 
-                context.Users.Add(usu);
-                context.SaveChanges();
+                if (usuAdd == null) {
+                    context.Users.Attach(usu);
+                    context.Entry(usu).State = EntityState.Added;
+                    context.SaveChanges();
                 }
             }
         }
@@ -41,9 +42,10 @@ namespace DB
             using (var context = virtual_storeContext.CreateContext())
             {
                 var usuDel = GetOne(usu.UserId);
-                if (usuDel != null) { 
-                context.Users.Remove(usuDel);
-                context.SaveChanges();
+                if (usuDel != null) {
+                    context.Users.Attach(usuDel);
+                    context.Entry(usuDel).State = EntityState.Deleted;
+                    context.SaveChanges();
                 }
             }
         }
