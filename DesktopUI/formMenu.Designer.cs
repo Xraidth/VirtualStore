@@ -502,6 +502,7 @@
             Name = "formMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "formMenu";
+            KeyDown += formMenu_KeyDown;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);

@@ -79,5 +79,25 @@ namespace DesktopUI
             formListar formListar = new formListar(typeof(DB.Models.Product));
             formListar.Show();
         }
+
+        private void formMenu_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.D1:
+                case Keys.NumPad1:
+                    usersToolStripMenuItem.PerformClick();
+                    break;
+                case Keys.D2:
+                case Keys.NumPad2:
+                    salesToolStripMenuItem.PerformClick();
+                    break;
+                case Keys.D3:
+                case Keys.NumPad3:
+                    productsToolStripMenuItem.PerformClick();
+                    break;
+                   
+            }
+        }
     }
 }
