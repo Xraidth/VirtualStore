@@ -11,7 +11,7 @@ namespace MiProyecto
         {
 
 
-            var newSL = new SalesLine(DataSale.GetOne(2), DataProduct.GetOne(1), 1);
+            var newSL = new SalesLine(DataSale.GetOne(2), DataProduct.GetOne(1), 10);
 
             DataSalesLines.Insert(newSL);
           

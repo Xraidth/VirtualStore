@@ -65,6 +65,14 @@ namespace DB
 
                 }
          }
+
+        static public User? SignIn(string user_name, string user_password)
+        {
+            using (var context = virtual_storeContext.CreateContext())
+            {
+                return context.Users.FirstOrDefault(x => x.UserName == user_name && x.UserPassword == user_password);
+            }
+        }
         
 
        
