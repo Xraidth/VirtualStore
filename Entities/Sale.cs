@@ -27,5 +27,8 @@ namespace DB.Models
             SalesLines = new HashSet<SalesLine>();
 
         }
+        public void setTotal(decimal st) {
+            Total = Math.Truncate(Convert.ToDecimal(Total + st) * 1000) / 1000;
+        }
     }
 }

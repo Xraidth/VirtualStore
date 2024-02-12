@@ -31,6 +31,11 @@ namespace DB
             {
                 var sales_lineAdd = GetOne(sales_line.SaleId, sales_line.LineId);
                 if (sales_lineAdd == null) {
+
+
+                    handleAmounts(sales_line);
+                  
+
                     context.SalesLines.Attach(sales_line);
                     context.Entry(sales_line).State = EntityState.Added;
                     context.SaveChanges();
@@ -60,14 +65,26 @@ namespace DB
                     sale_line_mod.Product = pro;
                     sale_line_mod.SaleId = sale.SaleId;
                     sale_line_mod.SubTotal = sub_total;
-                    sale_line_mod.Amount = amount;                 
+                    sale_line_mod.Amount = amount;       
+                
+                    handleAmounts(sale_line_mod);
+
                     context.SalesLines.Attach(sale_line_mod);
                     context.Entry(sale_line_mod).State = EntityState.Modified;
                     context.SaveChanges();
                 }
          }
         
+        static private void handleAmounts(SalesLine sales_line) {
 
+            if (sales_line.Product.getStock() >= sales_line.Amount)
+            {
+                DataProduct.setStock(sales_line.Product, sales_line.Amount);
+            }
+            else { throw new InvalidOperationException("Stock unenough"); }
+
+            DataSale.setTotal(sales_line.Sale, sales_line.SubTotal);
+        }
        
     }
 

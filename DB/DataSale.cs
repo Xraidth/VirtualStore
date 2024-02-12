@@ -58,7 +58,7 @@ namespace DB
                     saleMod.Total = total;
                     saleMod.SaleDay = sale_day;
                     saleMod.User = usu;
-                saleMod.UserId = usu.UserId;    
+                    saleMod.UserId = usu.UserId;    
                     context.Sales.Attach(saleMod);
                     context.Entry(saleMod).State = EntityState.Modified;
                     context.SaveChanges();
@@ -67,7 +67,20 @@ namespace DB
                 }
          }
         
+        static public void setTotal(Sale sale, decimal st)
+        {
+            using (var context = virtual_storeContext.CreateContext())
+            {
+                var saleMod = GetOne(sale.SaleId);
+                saleMod.setTotal(st);
+                context.Sales.Attach(saleMod);
+                context.Entry(saleMod).State = EntityState.Modified;
+                context.SaveChanges();
 
+
+            }
+
+        }
        
     }
 

@@ -73,6 +73,13 @@ namespace DB
                 entity.Property(e => e.ProductPrice)
                     .HasPrecision(9, 3)
                     .HasColumnName("product_price");
+
+                entity.Property(e => e.ProductStock)
+                 .IsRequired()
+                .HasColumnType("INT")
+                .HasAnnotation("CheckConstraint", "CHECK (product_stock >= 0)")
+                .HasColumnName("product_stock");
+
             });
 
             modelBuilder.Entity<Sale>(entity =>

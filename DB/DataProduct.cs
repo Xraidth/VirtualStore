@@ -65,8 +65,24 @@ namespace DB
                     context.SaveChanges();
                    
 
-                }
+            }
          }
+
+        static public void setStock(Product pro, int amount)
+        {
+            using (var context = virtual_storeContext.CreateContext())
+            {
+                var proMod = GetOne(pro.ProductId);
+
+                proMod.setStock(amount);
+
+                context.Products.Attach(proMod);
+                context.Entry(proMod).State = EntityState.Modified;
+                context.SaveChanges();
+
+
+            }
+        }
         
 
         

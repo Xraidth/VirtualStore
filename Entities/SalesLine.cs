@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace DB.Models
 {
     public partial class SalesLine
@@ -22,7 +23,8 @@ namespace DB.Models
             SubTotal = Math.Truncate(Convert.ToDecimal(pro.ProductPrice * amount) * 1000) / 1000;
             Sale = sale;
             Product = pro;
-            
+
+
         }
         public SalesLine() { }
 
