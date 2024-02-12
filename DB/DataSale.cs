@@ -14,14 +14,18 @@ namespace DB
         {
             using (var context = virtual_storeContext.CreateContext())
             {
-                return context.Sales.ToList();
+                return context.Sales
+                    .Include(x=>x.User)
+                    .ToList();
             }
         }
         static public Sale? GetOne(int id) 
         {
             using (var context = virtual_storeContext.CreateContext())
             {
-                return context.Sales.FirstOrDefault(x => x.SaleId == id);
+                return context.Sales
+                    .Include(x => x.User)
+                    .FirstOrDefault(x => x.SaleId == id);
             }
         }
 

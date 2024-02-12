@@ -85,7 +85,15 @@ namespace DB
 
             DataSale.setTotal(sales_line.Sale, sales_line.SubTotal);
         }
-       
+
+        static public List<SalesLine> saleslineSearcher(int sale_id)
+        {
+            using (var context = virtual_storeContext.CreateContext())
+            {
+                return context.SalesLines.Where(x=>x.SaleId == sale_id).ToList();
+            }
+        }
+
     }
 
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DB.ToGrid;
+using System;
 using System.Collections.Generic;
 
 
@@ -27,6 +28,9 @@ namespace DB.Models
 
         }
         public SalesLine() { }
-
+        public SalesLineGrid ToSalesLineGrid()
+        {
+            return new SalesLineGrid(LineId, SaleId, SubTotal,Amount, ProductId);
+        }
     }
 }

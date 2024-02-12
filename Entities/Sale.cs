@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DB.ToGrid;
 
 namespace DB.Models
 {
@@ -30,5 +31,11 @@ namespace DB.Models
         public void setTotal(decimal st) {
             Total = Math.Truncate(Convert.ToDecimal(Total + st) * 1000) / 1000;
         }
+
+        public SaleGrid ToSaleGrid()
+        {
+           return new SaleGrid(SaleId, SaleDay, User.UserName, Total);
+        }
+
     }
 }
