@@ -19,10 +19,10 @@ namespace DB.Models
         public virtual User User { get; set; } = null!;
 
         
-        public Sale(User usu, decimal total)
+        public Sale(User usu)
         {
             User = usu;
-            Total = total;
+            Total = 0;
             SaleDay = DateTime.Now;
             UserId = usu.UserId;
             SalesLines = new HashSet<SalesLine>();

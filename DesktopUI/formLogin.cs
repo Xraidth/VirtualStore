@@ -1,4 +1,5 @@
 using DB;
+using DB.Models;
 
 namespace DesktopUI
 {
@@ -13,10 +14,12 @@ namespace DesktopUI
 
         private void btnSignin_Click(object sender, EventArgs e)
         {
-            if (DataUser.SignIn(txtUserName.Text, txtPass.Text) != null)
+            var userloged = DataUser.SignIn(txtUserName.Text, txtPass.Text);
+
+            if (userloged != null)
             {
                 this.Hide();
-                var formMenu = new formMenu();
+                var formMenu = new formMenu(userloged);
                 formMenu.FormClosed += (s, args) => this.Close();
                 formMenu.ShowDialog();
 

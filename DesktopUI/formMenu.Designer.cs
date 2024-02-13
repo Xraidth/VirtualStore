@@ -64,6 +64,8 @@
             tlpDepo = new TableLayoutPanel();
             pictureBox9 = new PictureBox();
             label10 = new Label();
+            label11 = new Label();
+            lblUserLogued = new Label();
             menuStrip1.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -488,11 +490,33 @@
             label10.TextAlign = ContentAlignment.MiddleCenter;
             label10.Click += label10_Click;
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(464, 27);
+            label11.Name = "label11";
+            label11.Size = new Size(33, 15);
+            label11.TabIndex = 5;
+            label11.Text = "User:";
+            label11.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblUserLogued
+            // 
+            lblUserLogued.AutoSize = true;
+            lblUserLogued.Location = new Point(497, 27);
+            lblUserLogued.Name = "lblUserLogued";
+            lblUserLogued.Size = new Size(20, 15);
+            lblUserLogued.TabIndex = 6;
+            lblUserLogued.Text = "lbl";
+            lblUserLogued.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // formMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(572, 335);
+            Controls.Add(lblUserLogued);
+            Controls.Add(label11);
             Controls.Add(tlpDepo);
             Controls.Add(tlpSales);
             Controls.Add(tlpAdm);
@@ -502,6 +526,7 @@
             Name = "formMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "formMenu";
+            Load += formMenu_Load;
             KeyDown += formMenu_KeyDown;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -567,5 +592,7 @@
         private PictureBox pictureBox9;
         private Label label10;
         public TableLayoutPanel tlpAdm;
+        private Label label11;
+        private Label lblUserLogued;
     }
 }

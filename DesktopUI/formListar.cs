@@ -21,19 +21,28 @@ namespace Escritorio.Generalizado
     {
         private Type? tipoDato;
         private List<Object> ListaGeneral = new List<Object>();
-        private int? IDsale;
+        private Sale? saleAdder;
+        private User? UserLogued;
         public formListar(Type tipo_dato)
         {
             InitializeComponent();
             tipoDato = tipo_dato;
         }
 
-        public formListar(Type tipo_dato, int id_sale)
+        public formListar(Type tipo_dato, User user_logued)
         {
-            IDsale = id_sale;
             InitializeComponent();
             tipoDato = tipo_dato;
+            UserLogued = user_logued;
         }
+
+        public formListar(Type tipo_dato, Sale sale_adder_lt)
+        {
+            InitializeComponent();
+            saleAdder = sale_adder_lt;
+            tipoDato = tipo_dato;
+        }
+
 
         private void formListar_Load(object sender, EventArgs e)
         {
@@ -88,7 +97,7 @@ namespace Escritorio.Generalizado
             }
             else if (tipoDato == typeof(SalesLine))
             {
-                List<SalesLine> sales_lines = (IDsale != null) ? DataSalesLines.saleslineSearcher(Convert.ToInt32(IDsale)) : DataSalesLines.GetAll();
+                List<SalesLine> sales_lines = (saleAdder.SaleId != null) ? DataSalesLines.saleslineSearcher(Convert.ToInt32(saleAdder.SaleId)) : DataSalesLines.GetAll();
                 var sales_linesGrid = sales_lines.Select(s => s.ToSalesLineGrid()).ToList();
                 ListaGeneral.Add(sales_linesGrid);
             }
@@ -123,7 +132,7 @@ namespace Escritorio.Generalizado
             }
             else if (tipoDato == typeof(SalesLine))
             {
-                List<SalesLine> sales_lines = (IDsale != null) ? DataSalesLines.saleslineSearcher(Convert.ToInt32(IDsale)) : DataSalesLines.GetAll();
+                List<SalesLine> sales_lines = (saleAdder.SaleId != null) ? DataSalesLines.saleslineSearcher(Convert.ToInt32(saleAdder.SaleId)) : DataSalesLines.GetAll();
                 var sales_linesGrid = sales_lines.Select(s => s.ToSalesLineGrid()).ToList();
                 ListaGeneral.Add(sales_linesGrid.Where(x => x.SaleId.ToString().Contains(consulta)).ToList());
             }
@@ -160,54 +169,57 @@ namespace Escritorio.Generalizado
 
 
             }
-            /*  else if (tipoDato == typeof(TPI.Entidades.Cursado))
-              {
-                  formAgregarCursado formAgregarCursado = new formAgregarCursado();
-                  formAgregarCursado.Show();
-                  formAgregarCursado.FormClosed += (s, args) => btnListar_Click(sender, e);
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Materia))
-              {
-                  formCrearMateria formCrearMateria = new formCrearMateria();
-                  formCrearMateria.Show();
-                  formCrearMateria.FormClosed += (s, args) => btnListar_Click(sender, e);
+            else if (tipoDato == typeof(Sale))
+           {
+                var new_sale = new Sale(UserLogued);
+                DataSale.Insert(new_sale);
+                var saleyetadder = DataSale.GetOne(new_sale.SaleId);
+                formListar formListar = new formListar(typeof(SalesLine),saleyetadder);
+                formListar.Show();
+                //formListar.ListarClicked += (s, args) => btnListar_Click(sender, e);
+           }
+           /* else if (tipoDato == typeof(TPI.Entidades.Materia))
+             {
+                 formCrearMateria formCrearMateria = new formCrearMateria();
+                 formCrearMateria.Show();
+                 formCrearMateria.FormClosed += (s, args) => btnListar_Click(sender, e);
 
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Persona))
-              {
-                  formNuevaPersona formNuevaPersona = new formNuevaPersona();
-                  formNuevaPersona.Show();
-                  formNuevaPersona.FormClosed += (s, args) => btnListar_Click(sender, e);
+             }
+             else if (tipoDato == typeof(TPI.Entidades.Persona))
+             {
+                 formNuevaPersona formNuevaPersona = new formNuevaPersona();
+                 formNuevaPersona.Show();
+                 formNuevaPersona.FormClosed += (s, args) => btnListar_Click(sender, e);
 
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Plan))
-              {
-                  MessageBox.Show("No implementado");
+             }
+             else if (tipoDato == typeof(TPI.Entidades.Plan))
+             {
+                 MessageBox.Show("No implementado");
 
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Usuario))
-              {
-                  formNuevoUsuario formNuevoUsuario = new formNuevoUsuario();
-                  formNuevoUsuario.Show();
-                  formNuevoUsuario.FormClosed += (s, args) => btnListar_Click(sender, e);
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Comision))
-              {
-                  formCrearComision formCrearComision = new formCrearComision();
-                  formCrearComision.Show();
-                  formCrearComision.FormClosed += (s, args) => btnListar_Click(sender, e);
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Especialidad))
-              {
-                  formCrearEspecialidad formCrearEspecialidad = new formCrearEspecialidad();
-                  formCrearEspecialidad.Show();
-                  formCrearEspecialidad.FormClosed += (s, args) => btnListar_Click(sender, e);
-              }
-              else if (tipoDato == typeof(TPI.Entidades.TipoDeUsuario))
-              {
-                  //No implementado
-              }
-            */
+             }
+             else if (tipoDato == typeof(TPI.Entidades.Usuario))
+             {
+                 formNuevoUsuario formNuevoUsuario = new formNuevoUsuario();
+                 formNuevoUsuario.Show();
+                 formNuevoUsuario.FormClosed += (s, args) => btnListar_Click(sender, e);
+             }
+             else if (tipoDato == typeof(TPI.Entidades.Comision))
+             {
+                 formCrearComision formCrearComision = new formCrearComision();
+                 formCrearComision.Show();
+                 formCrearComision.FormClosed += (s, args) => btnListar_Click(sender, e);
+             }
+             else if (tipoDato == typeof(TPI.Entidades.Especialidad))
+             {
+                 formCrearEspecialidad formCrearEspecialidad = new formCrearEspecialidad();
+                 formCrearEspecialidad.Show();
+                 formCrearEspecialidad.FormClosed += (s, args) => btnListar_Click(sender, e);
+             }
+             else if (tipoDato == typeof(TPI.Entidades.TipoDeUsuario))
+             {
+                 //No implementado
+             }
+           */
 
         }
 

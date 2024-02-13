@@ -15,9 +15,11 @@ namespace DesktopUI
 {
     public partial class formMenu : Form
     {
-        public formMenu()
+        public DB.Models.User UserLogued;
+        public formMenu(DB.Models.User user_logued)
         {
             InitializeComponent();
+            UserLogued = user_logued;
         }
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -96,8 +98,13 @@ namespace DesktopUI
                 case Keys.NumPad3:
                     productsToolStripMenuItem.PerformClick();
                     break;
-                   
+
             }
+        }
+
+        private void formMenu_Load(object sender, EventArgs e)
+        {
+            lblUserLogued.Text = UserLogued.UserName;  
         }
     }
 }
