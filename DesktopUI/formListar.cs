@@ -12,6 +12,8 @@ using DB.Models;
 using DB;
 using DB.ToGrid;
 using DesktopUI.Product;
+using DesktopUI.FormsProduct;
+using DesktopUI.FormsUser;
 
 namespace Escritorio.Generalizado
 {
@@ -150,15 +152,15 @@ namespace Escritorio.Generalizado
                 formProductAdd.Show();
                 formProductAdd.ListarClicked += (s, args) => btnListar_Click(sender, e);
             }
-            /*  else if (tipoDato == typeof(TPI.Entidades.Curso))
+            else if (tipoDato == typeof(User))
               {
-                  formCrearCurso formCrearCurso = new formCrearCurso();
-                  formCrearCurso.Show();
-                  formCrearCurso.FormClosed += (s, args) => btnListar_Click(sender, e);
+                  formUserAdd formUserAdd = new formUserAdd();
+                  formUserAdd.Show();
+                formUserAdd.ListarClicked += (s, args) => btnListar_Click(sender, e);
 
 
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Cursado))
+            }
+            /*  else if (tipoDato == typeof(TPI.Entidades.Cursado))
               {
                   formAgregarCursado formAgregarCursado = new formAgregarCursado();
                   formAgregarCursado.Show();
@@ -221,12 +223,12 @@ namespace Escritorio.Generalizado
                      List<Product> lpc = (List<Product>)ListaGeneral[0];
                      DataProduct.DeleteOne(lpc[filaSeleccionada]);
                  }
-                /* else if (tipoDato == typeof(TPI.Entidades.Curso))
+                 else if (tipoDato == typeof(User))
                  {
-                     List<TPI.Entidades.Curso> lpc = (List<TPI.Entidades.Curso>)ListaGeneral[0];
-                     TPI.Negocio.Curso.Eliminar(lpc[filaSeleccionada]);
+                     List<User> lpc = (List<User>)ListaGeneral[0];
+                     DataUser.DeleteOne(lpc[filaSeleccionada]);
                  }
-                 else if (tipoDato == typeof(TPI.Entidades.Cursado))
+                /* else if (tipoDato == typeof(TPI.Entidades.Cursado))
                  {
                      List<TPI.Entidades.Cursado> lpc = (List<TPI.Entidades.Cursado>)ListaGeneral[0];
                      TPI.Negocio.Cursado.Eliminar(lpc[filaSeleccionada]);
@@ -286,22 +288,22 @@ namespace Escritorio.Generalizado
             if (dgvGrilla.SelectedRows.Count == 0) { MessageBox.Show("Debe seleccionar algo para ser Modificado"); return; }
 
             int filaSeleccionada = dgvGrilla.SelectedRows[0].Index;
-            /* if (tipoDato == typeof(TPI.Entidades.ProfesorCurso))
+             if (tipoDato == typeof(Product))
              {
-                 List<TPI.Entidades.ProfesorCurso> lpc = (List<TPI.Entidades.ProfesorCurso>)ListaGeneral[0];
-                 formModificarProfesorCurso formModificarProfesorCurso = new formModificarProfesorCurso(lpc[filaSeleccionada]);
-                 formModificarProfesorCurso.Show();
-                 formModificarProfesorCurso.FormClosed += (s, args) => btnListar_Click(sender, e);
-             }
-             else if (tipoDato == typeof(TPI.Entidades.Curso))
+                 List<Product> lpc = (List<Product>)ListaGeneral[0];
+                 formProductAdd formProductAdd = new formProductAdd(lpc[filaSeleccionada]);
+                 formProductAdd.Show();
+                 formProductAdd.ListarClicked += (s, args) => btnListar_Click(sender, e);
+            }
+             else if (tipoDato == typeof(User))
              {
-                 List<TPI.Entidades.Curso> lpc = (List<TPI.Entidades.Curso>)ListaGeneral[0];
-                 formModificarCurso formModificarCurso = new formModificarCurso(lpc[filaSeleccionada]);
-                 formModificarCurso.Show();
-                 formModificarCurso.FormClosed += (s, args) => btnListar_Click(sender, e);
+                 List<User> lpc = (List<User>)ListaGeneral[0];
+                 formUserAdd formUserAdd = new formUserAdd(lpc[filaSeleccionada]);
+                 formUserAdd.Show();
+                 formUserAdd.ListarClicked += (s, args) => btnListar_Click(sender, e);
 
-             }
-             else if (tipoDato == typeof(TPI.Entidades.Cursado))
+            }
+            /* else if (tipoDato == typeof(TPI.Entidades.Cursado))
              {
                  List<TPI.Entidades.Cursado> lpc = (List<TPI.Entidades.Cursado>)ListaGeneral[0];
                  formModificarCursado formModificarCursado = new formModificarCursado(lpc[filaSeleccionada]);
@@ -356,23 +358,23 @@ namespace Escritorio.Generalizado
 
             int filaSeleccionada = dgvGrilla.SelectedRows[0].Index;
 
-            /*  if (tipoDato == typeof(TPI.Entidades.ProfesorCurso))
+              if (tipoDato == typeof(Product))
               {
-                  List<TPI.Entidades.ProfesorCurso> lpc = (List<TPI.Entidades.ProfesorCurso>)ListaGeneral[0];
-                  formMostrarProfesorCurso formMostrarProfesorCurso = new formMostrarProfesorCurso(lpc[filaSeleccionada]);
-                  formMostrarProfesorCurso.Show();
-                  formMostrarProfesorCurso.FormClosed += (s, args) => btnListar_Click(sender, e);
+                  List<Product> lpc = (List<Product>)ListaGeneral[0];
+                  formProductConsult formProductConsult = new formProductConsult(lpc[filaSeleccionada]);
+                  formProductConsult.Show();
+                  
 
 
               }
-              else if (tipoDato == typeof(TPI.Entidades.Curso))
+              else if (tipoDato == typeof(User))
               {
-                  List<TPI.Entidades.Curso> lpc = (List<TPI.Entidades.Curso>)ListaGeneral[0];
-                  formMostrarCurso formMostrarCurso = new formMostrarCurso(lpc[filaSeleccionada]);
-                  formMostrarCurso.Show();
-                  formMostrarCurso.FormClosed += (s, args) => btnListar_Click(sender, e);
+                  List<User> lpc = (List<User>)ListaGeneral[0];
+                  formUserConsult formUserConsult = new formUserConsult(lpc[filaSeleccionada]);
+                  formUserConsult.Show();
+                  
               }
-              else if (tipoDato == typeof(TPI.Entidades.Cursado))
+            /*  else if (tipoDato == typeof(TPI.Entidades.Cursado))
               {
                   List<TPI.Entidades.Cursado> lpc = (List<TPI.Entidades.Cursado>)ListaGeneral[0];
                   FormMostrarCursado formMostrarCursado = new FormMostrarCursado(lpc[filaSeleccionada]);

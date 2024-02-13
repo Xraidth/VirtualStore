@@ -1,6 +1,6 @@
-﻿namespace DesktopUI.FormsProduct
+﻿namespace DesktopUI.FormsUser
 {
-    partial class formProductConsult
+    partial class formUserConsult
     {
         /// <summary>
         /// Required designer variable.
@@ -28,74 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            lblName = new Label();
-            lblStock = new Label();
-            lblPrice = new Label();
+            lblUserName = new Label();
+            lblPass = new Label();
             label4 = new Label();
             lblID = new Label();
             SuspendLayout();
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(79, 186);
-            label3.Name = "label3";
-            label3.Size = new Size(33, 15);
-            label3.TabIndex = 17;
-            label3.Text = "Price";
-            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(79, 134);
+            label2.Location = new Point(78, 135);
             label2.Name = "label2";
-            label2.Size = new Size(36, 15);
+            label2.Size = new Size(60, 15);
             label2.TabIndex = 16;
-            label2.Text = "Stock";
+            label2.Text = "Password:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(79, 86);
+            label1.Location = new Point(78, 87);
             label1.Name = "label1";
-            label1.Size = new Size(42, 15);
-            label1.TabIndex = 14;
-            label1.Text = "Name:";
+            label1.Size = new Size(68, 15);
+            label1.TabIndex = 15;
+            label1.Text = "User Name:";
             // 
-            // lblName
+            // lblUserName
             // 
-            lblName.AutoSize = true;
-            lblName.Location = new Point(142, 86);
-            lblName.Name = "lblName";
-            lblName.Size = new Size(20, 15);
-            lblName.TabIndex = 18;
-            lblName.Text = "lbl";
+            lblUserName.AutoSize = true;
+            lblUserName.Location = new Point(164, 87);
+            lblUserName.Name = "lblUserName";
+            lblUserName.Size = new Size(20, 15);
+            lblUserName.TabIndex = 18;
+            lblUserName.Text = "lbl";
             // 
-            // lblStock
+            // lblPass
             // 
-            lblStock.AutoSize = true;
-            lblStock.Location = new Point(142, 134);
-            lblStock.Name = "lblStock";
-            lblStock.Size = new Size(20, 15);
-            lblStock.TabIndex = 19;
-            lblStock.Text = "lbl";
-            // 
-            // lblPrice
-            // 
-            lblPrice.AutoSize = true;
-            lblPrice.Location = new Point(142, 186);
-            lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(20, 15);
-            lblPrice.TabIndex = 20;
-            lblPrice.Text = "lbl";
+            lblPass.AutoSize = true;
+            lblPass.Location = new Point(164, 135);
+            lblPass.Name = "lblPass";
+            lblPass.Size = new Size(20, 15);
+            lblPass.TabIndex = 19;
+            lblPass.Text = "lbl";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(91, 44);
+            label4.Location = new Point(118, 45);
             label4.Name = "label4";
             label4.Size = new Size(21, 15);
             label4.TabIndex = 21;
@@ -104,41 +84,36 @@
             // lblID
             // 
             lblID.AutoSize = true;
-            lblID.Location = new Point(142, 44);
+            lblID.Location = new Point(164, 45);
             lblID.Name = "lblID";
             lblID.Size = new Size(20, 15);
             lblID.TabIndex = 22;
             lblID.Text = "lbl";
             // 
-            // formProductConsult
+            // formUserConsult
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(253, 265);
+            ClientSize = new Size(294, 200);
             Controls.Add(lblID);
             Controls.Add(label4);
-            Controls.Add(lblPrice);
-            Controls.Add(lblStock);
-            Controls.Add(lblName);
-            Controls.Add(label3);
+            Controls.Add(lblPass);
+            Controls.Add(lblUserName);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "formProductConsult";
+            Name = "formUserConsult";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "formProductConsult";
-            Load += formProductConsult_Load;
+            Text = "formUserConsult";
+            Load += formUserConsult_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label3;
         private Label label2;
         private Label label1;
-        private Label lblName;
-        private Label lblStock;
-        private Label lblPrice;
+        private Label lblUserName;
+        private Label lblPass;
         private Label label4;
         private Label lblID;
     }

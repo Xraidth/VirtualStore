@@ -50,14 +50,14 @@ namespace DB
             }
         }
 
-        static public void Update(Product pro, string product_name, decimal product_price)
+        static public void Update(Product pro, string product_name, int product_stock, decimal product_price)
         {
             using (var context = virtual_storeContext.CreateContext())
             {
                     var proMod = GetOne(pro.ProductId);  
 
                     proMod.ProductName = product_name;
-
+                    proMod.ProductStock = product_stock;
                     proMod.ProductPrice = product_price;
 
                     context.Products.Attach(proMod);

@@ -13,12 +13,12 @@ namespace DesktopUI.Product
 {
     public delegate void ListarEventHandler(object sender, EventArgs e);
 
-    
+
     public partial class formProductAdd : Form
     {
         private DB.Models.Product? productUp;
 
-        
+
         public formProductAdd()
         {
             InitializeComponent();
@@ -33,7 +33,14 @@ namespace DesktopUI.Product
 
         private void setCargaUpdate()
         {
-
+            if (productUp != null)
+            {
+                btnAdd.Text = "Update";
+                txtName.Text = productUp.ProductName;
+                nudStock.Value = productUp.ProductStock;
+                nudPrice.Value = productUp.ProductPrice;
+            }
+            else { MessageBox.Show("Error de intento de actualizacion"); }
         }
 
 
@@ -47,15 +54,26 @@ namespace DesktopUI.Product
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-           
 
-            if(txtName.Text!=""&& txtName.Text != null && nudStock.Value>=0 && nudStock.Value >= 0)
+
+            if (txtName.Text != "" && txtName.Text != null && nudStock.Value >= 0 && nudStock.Value >= 0)
             {
                 string txt_name = Convert.ToString(txtName.Text);
                 int num_stock = Convert.ToInt32(nudStock.Value);
                 decimal num_price = Convert.ToDecimal(nudPrice.Value);
-                var new_product = new DB.Models.Product(txt_name, num_stock,num_price);
-                DataProduct.Insert(new_product);
+
+                if (btnAdd.Text.ToString().Contains("Add"))
+                {
+                    var new_product = new DB.Models.Product(txt_name, num_stock, num_price);
+                    DataProduct.Insert(new_product);
+                }
+                else
+                {
+
+                    DataProduct.Update(productUp, txt_name, num_stock, num_price);
+                }
+
+
                 OnListarClicked(EventArgs.Empty);
             }
             else
@@ -64,11 +82,10 @@ namespace DesktopUI.Product
             }
         }
 
+
         public virtual void OnListarClicked(EventArgs e)
         {
             ListarClicked?.Invoke(this, e);
         }
-
-
     }
 }
