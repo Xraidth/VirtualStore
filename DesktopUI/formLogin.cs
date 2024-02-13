@@ -9,10 +9,7 @@ namespace DesktopUI
             InitializeComponent();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
 
         private void btnSignin_Click(object sender, EventArgs e)
         {

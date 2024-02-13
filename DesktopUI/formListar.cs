@@ -11,6 +11,7 @@ using System.Collections;
 using DB.Models;
 using DB;
 using DB.ToGrid;
+using DesktopUI.Product;
 
 namespace Escritorio.Generalizado
 {
@@ -143,14 +144,13 @@ namespace Escritorio.Generalizado
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            /*  if (tipoDato == typeof(TPI.Entidades.ProfesorCurso))
+              if (tipoDato == typeof(Product))
               {
-                  formAgregarProfesorCurso formAgregarProfesorCurso = new formAgregarProfesorCurso();
-                  formAgregarProfesorCurso.Show();
-                  formAgregarProfesorCurso.FormClosed += (s, args) => btnListar_Click(sender, e);
-
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Curso))
+                  formProductAdd formProductAdd = new formProductAdd();
+                formProductAdd.Show();
+                formProductAdd.ListarClicked += (s, args) => btnListar_Click(sender, e);
+            }
+            /*  else if (tipoDato == typeof(TPI.Entidades.Curso))
               {
                   formCrearCurso formCrearCurso = new formCrearCurso();
                   formCrearCurso.Show();
@@ -216,12 +216,12 @@ namespace Escritorio.Generalizado
             if (conf == DialogResult.Yes)
             {
                 int filaSeleccionada = dgvGrilla.SelectedRows[0].Index;
-                /* if (tipoDato == typeof(TPI.Entidades.ProfesorCurso))
+                 if (tipoDato == typeof(Product))
                  {
-                     List<TPI.Entidades.ProfesorCurso> lpc = (List<TPI.Entidades.ProfesorCurso>)ListaGeneral[0];
-                     TPI.Negocio.ProfesorCurso.Eliminar(lpc[filaSeleccionada]);
+                     List<Product> lpc = (List<Product>)ListaGeneral[0];
+                     DataProduct.DeleteOne(lpc[filaSeleccionada]);
                  }
-                 else if (tipoDato == typeof(TPI.Entidades.Curso))
+                /* else if (tipoDato == typeof(TPI.Entidades.Curso))
                  {
                      List<TPI.Entidades.Curso> lpc = (List<TPI.Entidades.Curso>)ListaGeneral[0];
                      TPI.Negocio.Curso.Eliminar(lpc[filaSeleccionada]);

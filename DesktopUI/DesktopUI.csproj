@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="FormsSale\formSaleAdd.cs" />
+    <Compile Remove="FormsSale\formSaleAdd.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DB\DB.csproj" />
     <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>
@@ -26,6 +31,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="FormsSale\" />
+    <Folder Include="FormsUser\" />
+    <Folder Include="FormsSalesLine\" />
   </ItemGroup>
 
 </Project>

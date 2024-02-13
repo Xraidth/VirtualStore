@@ -35,43 +35,42 @@
             lblPass = new Label();
             label1 = new Label();
             btnSignin = new Button();
-            btnCancel = new Button();
             SuspendLayout();
             // 
             // lblUserName
             // 
             lblUserName.AutoSize = true;
-            lblUserName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblUserName.Location = new Point(56, 79);
+            lblUserName.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUserName.Location = new Point(21, 82);
             lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(87, 21);
+            lblUserName.Size = new Size(81, 20);
             lblUserName.TabIndex = 0;
             lblUserName.Text = "UserName:";
             // 
             // txtUserName
             // 
-            txtUserName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtUserName.Location = new Point(163, 76);
+            txtUserName.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUserName.Location = new Point(105, 82);
             txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(168, 29);
+            txtUserName.Size = new Size(168, 27);
             txtUserName.TabIndex = 1;
             // 
             // txtPass
             // 
-            txtPass.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPass.Location = new Point(163, 120);
+            txtPass.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPass.Location = new Point(105, 126);
             txtPass.Name = "txtPass";
             txtPass.PasswordChar = '*';
-            txtPass.Size = new Size(168, 29);
+            txtPass.Size = new Size(168, 27);
             txtPass.TabIndex = 3;
             // 
             // lblPass
             // 
             lblPass.AutoSize = true;
-            lblPass.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPass.Location = new Point(64, 123);
+            lblPass.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPass.Location = new Point(22, 128);
             lblPass.Name = "lblPass";
-            lblPass.Size = new Size(79, 21);
+            lblPass.Size = new Size(73, 20);
             lblPass.TabIndex = 2;
             lblPass.Text = "Password:";
             // 
@@ -87,31 +86,21 @@
             // 
             // btnSignin
             // 
-            btnSignin.Location = new Point(296, 188);
+            btnSignin.Location = new Point(91, 176);
             btnSignin.Name = "btnSignin";
-            btnSignin.Size = new Size(75, 23);
+            btnSignin.Size = new Size(192, 33);
             btnSignin.TabIndex = 5;
             btnSignin.Text = "Sign in";
             btnSignin.UseVisualStyleBackColor = true;
             btnSignin.Click += btnSignin_Click;
-            // 
-            // btnCancel
-            // 
-            btnCancel.Location = new Point(38, 188);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(75, 23);
-            btnCancel.TabIndex = 6;
-            btnCancel.Text = "Cancel";
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
             // 
             // formLogin
             // 
             AcceptButton = btnSignin;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(402, 238);
-            Controls.Add(btnCancel);
+            BackColor = Color.White;
+            ClientSize = new Size(357, 239);
             Controls.Add(btnSignin);
             Controls.Add(label1);
             Controls.Add(txtPass);
@@ -134,6 +123,5 @@
         private Label lblPass;
         private Label label1;
         private Button btnSignin;
-        private Button btnCancel;
     }
 }
