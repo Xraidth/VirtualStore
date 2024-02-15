@@ -36,13 +36,14 @@
             label3 = new Label();
             nudStock = new NumericUpDown();
             nudPrice = new NumericUpDown();
+            btnApply = new Button();
             ((System.ComponentModel.ISupportInitialize)nudStock).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudPrice).BeginInit();
             SuspendLayout();
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(191, 307);
+            btnAdd.Location = new Point(115, 306);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(75, 23);
             btnAdd.TabIndex = 0;
@@ -52,7 +53,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(21, 307);
+            btnCancel.Location = new Point(17, 305);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 1;
@@ -112,11 +113,22 @@
             nudPrice.Size = new Size(62, 23);
             nudPrice.TabIndex = 11;
             // 
+            // btnApply
+            // 
+            btnApply.Location = new Point(207, 306);
+            btnApply.Name = "btnApply";
+            btnApply.Size = new Size(75, 23);
+            btnApply.TabIndex = 12;
+            btnApply.Text = "Apply";
+            btnApply.UseVisualStyleBackColor = true;
+            btnApply.Click += btnApply_Click;
+            // 
             // formProductAdd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(294, 356);
+            Controls.Add(btnApply);
             Controls.Add(nudPrice);
             Controls.Add(nudStock);
             Controls.Add(label3);
@@ -136,7 +148,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button btnApply;
         private Button button2;
         private Label label1;
         private TextBox textBox1;

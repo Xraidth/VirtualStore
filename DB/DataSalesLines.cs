@@ -14,14 +14,20 @@ namespace DB
         {
             using (var context = virtual_storeContext.CreateContext())
             {
-                return context.SalesLines.ToList();
+                return context.SalesLines
+                    .Include(x => x.Sale)
+                    .Include(x => x.Product)
+                    .ToList();
             }
         }
         static public SalesLine? GetOne(Sale sale_get, int sale_line_id) 
         {
             using (var context = virtual_storeContext.CreateContext())
             {
-                return context.SalesLines.FirstOrDefault(x => x.Sale.SaleId == sale_get.SaleId && x.LineId == sale_line_id);
+                return context.SalesLines
+                 .Include(x => x.Sale)
+                 .Include(x => x.Product)
+                 .FirstOrDefault(x => x.Sale.SaleId == sale_get.SaleId && x.LineId == sale_line_id);
             }
         }
 
@@ -34,10 +40,9 @@ namespace DB
 
 
                     handleAmounts(sales_line);
-                  
-
                     context.SalesLines.Attach(sales_line);
                     context.Entry(sales_line).State = EntityState.Added;
+                    
                     context.SaveChanges();
                 }
             }
@@ -47,7 +52,15 @@ namespace DB
             using (var context = virtual_storeContext.CreateContext())
             {
                 var sale_lineDel = GetOne(sale_line.Sale, sale_line.LineId);
+                var product_saleline = DataProduct.GetOne(sale_lineDel.ProductId);
+                var saleserched = DataSale.GetOne(sale_lineDel.SaleId);
+
                 if (sale_lineDel != null) {
+                    
+                    product_saleline.setStock(-(sale_lineDel.Amount));
+
+                    DataSale.setTotal(saleserched, -(sale_lineDel.SubTotal));
+
                     context.SalesLines.Attach(sale_lineDel);
                     context.Entry(sale_lineDel).State = EntityState.Deleted;
                     context.SaveChanges();

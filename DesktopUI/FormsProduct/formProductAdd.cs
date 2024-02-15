@@ -87,5 +87,11 @@ namespace DesktopUI.Product
         {
             ListarClicked?.Invoke(this, e);
         }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            btnAdd.PerformClick();
+            this.Close();
+        }
     }
 }

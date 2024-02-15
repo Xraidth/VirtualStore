@@ -54,20 +54,22 @@ namespace DesktopUI.FormsSalesLine
         private void btnAdd_Click(object sender, EventArgs e)
         {
             int amu = Convert.ToInt32(nudAmount.Value);
-            if ( product_adder != null || amu>=0 ) {
+            if (product_adder != null || amu >= 0)
+            {
 
 
-                if(product_adder.ProductStock >= amu) 
-                { 
-                if (btnAdd.Text.Contains("Add")) { 
-                    
-                var new_sale_line = new SalesLine(sale_adder, product_adder, amu);
-                DataSalesLines.Insert(new_sale_line);
-                }
-                else
+                if (product_adder.ProductStock >= amu)
                 {
-                    DataSalesLines.Update(sale_adder, saleLine_updater, product_adder, amu);
-                }
+                    if (btnAdd.Text.Contains("Add"))
+                    {
+
+                        SalesLine new_sale_line = new SalesLine(sale_adder, product_adder, amu);
+                        DataSalesLines.Insert(new_sale_line);
+                    }
+                    else
+                    {
+                        DataSalesLines.Update(sale_adder, saleLine_updater, product_adder, amu);
+                    }
                 }
                 else
                 {
@@ -79,7 +81,7 @@ namespace DesktopUI.FormsSalesLine
 
             }
             else { MessageBox.Show("Data Error"); }
-            
+
             OnListarClicked(EventArgs.Empty);
 
         }
@@ -101,7 +103,7 @@ namespace DesktopUI.FormsSalesLine
         private void cbxProductName_SelectedIndexChanged(object sender, EventArgs e)
         {
             var proID = Convert.ToInt32(cbxProductName.SelectedValue);
-            
+
             product_adder = DataProduct.GetOne(proID);
         }
 
@@ -117,13 +119,13 @@ namespace DesktopUI.FormsSalesLine
                     cbxProductName.ValueMember = "ProductId";
                 }
                 else
-                {   
+                {
                     cbxProductName.DataSource = products;
                 }
             }
             catch (Exception ex)
             {
-             
+
                 MessageBox.Show("Error: " + ex.Message);
             }
 
@@ -134,5 +136,10 @@ namespace DesktopUI.FormsSalesLine
             ListarClicked?.Invoke(this, e);
         }
 
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            btnAdd.PerformClick();
+            this.Close();
+        }
     }
 }

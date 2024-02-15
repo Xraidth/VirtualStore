@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DB;
 
 namespace DB.ToGrid
 {
@@ -15,6 +16,7 @@ namespace DB.ToGrid
         public int Amount { get; set; }
 
         public int ProductId { get; set; }
+        
 
         public SalesLineGrid(int line_id, int sale_id, decimal sub_total, int amount, int product_id)
         {

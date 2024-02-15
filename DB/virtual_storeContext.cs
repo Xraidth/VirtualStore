@@ -137,7 +137,7 @@ namespace DB
                 entity.HasOne(d => d.Sale)
                     .WithMany(p => p.SalesLines)
                     .HasForeignKey(d => d.SaleId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("fk_sale_id_sales");
 
                 entity.HasOne(d => d.Product)

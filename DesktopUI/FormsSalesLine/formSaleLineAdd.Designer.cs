@@ -36,6 +36,7 @@
             label3 = new Label();
             btnCancel = new Button();
             btnAdd = new Button();
+            btnApply = new Button();
             ((System.ComponentModel.ISupportInitialize)nudAmount).BeginInit();
             SuspendLayout();
             // 
@@ -99,7 +100,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(24, 181);
+            btnCancel.Location = new Point(27, 188);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 18;
@@ -109,7 +110,7 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(270, 181);
+            btnAdd.Location = new Point(154, 187);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(75, 23);
             btnAdd.TabIndex = 17;
@@ -117,11 +118,22 @@
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
+            // btnApply
+            // 
+            btnApply.Location = new Point(277, 188);
+            btnApply.Name = "btnApply";
+            btnApply.Size = new Size(75, 23);
+            btnApply.TabIndex = 19;
+            btnApply.Text = "Apply";
+            btnApply.UseVisualStyleBackColor = true;
+            btnApply.Click += btnApply_Click;
+            // 
             // formSaleLineAdd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(375, 218);
+            ClientSize = new Size(375, 225);
+            Controls.Add(btnApply);
             Controls.Add(btnCancel);
             Controls.Add(btnAdd);
             Controls.Add(label3);
@@ -149,5 +161,6 @@
         private Label label3;
         private Button btnCancel;
         private Button btnAdd;
+        private Button btnApply;
     }
 }

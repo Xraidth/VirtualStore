@@ -36,6 +36,7 @@ namespace DB.Models
         {
            return new SaleGrid(SaleId, SaleDay, User.UserName, Total);
         }
+      
 
     }
 }
