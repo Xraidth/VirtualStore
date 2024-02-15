@@ -14,6 +14,7 @@ using DB.ToGrid;
 using DesktopUI.Product;
 using DesktopUI.FormsProduct;
 using DesktopUI.FormsUser;
+using DesktopUI.FormsSalesLine;
 
 namespace Escritorio.Generalizado
 {
@@ -97,7 +98,7 @@ namespace Escritorio.Generalizado
             }
             else if (tipoDato == typeof(SalesLine))
             {
-                List<SalesLine> sales_lines = (saleAdder.SaleId != null) ? DataSalesLines.saleslineSearcher(Convert.ToInt32(saleAdder.SaleId)) : DataSalesLines.GetAll();
+                List<SalesLine> sales_lines = (saleAdder != null) ? DataSalesLines.saleslineSearcher(Convert.ToInt32(saleAdder.SaleId)) : DataSalesLines.GetAll();
                 var sales_linesGrid = sales_lines.Select(s => s.ToSalesLineGrid()).ToList();
                 ListaGeneral.Add(sales_linesGrid);
             }
@@ -176,16 +177,16 @@ namespace Escritorio.Generalizado
                 var saleyetadder = DataSale.GetOne(new_sale.SaleId);
                 formListar formListar = new formListar(typeof(SalesLine),saleyetadder);
                 formListar.Show();
-                //formListar.ListarClicked += (s, args) => btnListar_Click(sender, e);
-           }
-           /* else if (tipoDato == typeof(TPI.Entidades.Materia))
+                formListar.FormClosed += (s, args) => btnListar_Click(sender, e);
+            }
+            else if (tipoDato == typeof(SalesLine))
              {
-                 formCrearMateria formCrearMateria = new formCrearMateria();
-                 formCrearMateria.Show();
-                 formCrearMateria.FormClosed += (s, args) => btnListar_Click(sender, e);
+                 formSaleLineAdd formSaleLineAdd = new formSaleLineAdd(saleAdder);
+                formSaleLineAdd.Show();
+                formSaleLineAdd.ListarClicked += (s, args) => btnListar_Click(sender, e);
 
-             }
-             else if (tipoDato == typeof(TPI.Entidades.Persona))
+            }
+             /*else if (tipoDato == typeof(TPI.Entidades.Persona))
              {
                  formNuevaPersona formNuevaPersona = new formNuevaPersona();
                  formNuevaPersona.Show();
@@ -240,20 +241,25 @@ namespace Escritorio.Generalizado
                      List<User> lpc = (List<User>)ListaGeneral[0];
                      DataUser.DeleteOne(lpc[filaSeleccionada]);
                  }
-                /* else if (tipoDato == typeof(TPI.Entidades.Cursado))
+                 else if (tipoDato == typeof(Sale))
                  {
-                     List<TPI.Entidades.Cursado> lpc = (List<TPI.Entidades.Cursado>)ListaGeneral[0];
-                     TPI.Negocio.Cursado.Eliminar(lpc[filaSeleccionada]);
+                    List<SaleGrid> lpc = (List<SaleGrid>)ListaGeneral[0];
+                    var sale_to_delete = DataSale.GetOne(lpc[filaSeleccionada].SaleId);
 
-                 }
-                 else if (tipoDato == typeof(TPI.Entidades.Materia))
+                    DataSale.DeleteOne(sale_to_delete);
+
+                }
+                 else if (tipoDato == typeof(SalesLine))
                  {
-                     //List<TPI.Entidades.Materia> lpc =  (List<TPI.Entidades.Materia>)ListaGeneral[0];
-                     //TPI.Negocio.Materia.Eliminar(lpc[filaSeleccionada]);
+                     List<SalesLineGrid> lpc  =  (List<SalesLineGrid>)ListaGeneral[0];
+                     var sale_to_delete = DataSalesLines.GetOne(saleAdder, lpc[filaSeleccionada].LineId);
+                     DataSalesLines.DeleteOne(sale_to_delete);
+
+
                      //.FormClosed += (s, args) => btnListar_Click(sender, e);
-                     MessageBox.Show("NO IMPLEMENTADO");
+                     
                  }
-                 else if (tipoDato == typeof(TPI.Entidades.Persona))
+                /* else if (tipoDato == typeof(TPI.Entidades.Persona))
                  {
                      MessageBox.Show("No implementado");
 
@@ -315,19 +321,26 @@ namespace Escritorio.Generalizado
                  formUserAdd.ListarClicked += (s, args) => btnListar_Click(sender, e);
 
             }
-            /* else if (tipoDato == typeof(TPI.Entidades.Cursado))
+             else if (tipoDato == typeof(Sale))
              {
-                 List<TPI.Entidades.Cursado> lpc = (List<TPI.Entidades.Cursado>)ListaGeneral[0];
-                 formModificarCursado formModificarCursado = new formModificarCursado(lpc[filaSeleccionada]);
-                 formModificarCursado.Show();
-                 formModificarCursado.FormClosed += (s, args) => btnListar_Click(sender, e);
+                 List<SaleGrid> lpc = (List<SaleGrid>)ListaGeneral[0];
+                var sale_to_update = DataSale.GetOne(lpc[filaSeleccionada].SaleId);
+                     formListar formListar = new formListar(typeof(SalesLine), sale_to_update);
+                     formListar.Show();
 
              }
-             else if (tipoDato == typeof(TPI.Entidades.Materia))
+             else if (tipoDato == typeof(SalesLine))
              {
-                 MessageBox.Show("NO IMPLEMENTADO");
+                List<SalesLineGrid> lpc = (List<SalesLineGrid>)ListaGeneral[0];
+                var sale_to_update = DataSalesLines.GetOne(saleAdder, lpc[filaSeleccionada].LineId);
+                formSaleLineAdd formSaleLineAdd = new formSaleLineAdd(saleAdder);
+                formSaleLineAdd.Show();
+
+
+
+
              }
-             else if (tipoDato == typeof(TPI.Entidades.Persona))
+            /* else if (tipoDato == typeof(TPI.Entidades.Persona))
              {
                  MessageBox.Show("NO IMPLEMENTADO");
 
@@ -386,7 +399,7 @@ namespace Escritorio.Generalizado
                   formUserConsult.Show();
                   
               }
-            /*  else if (tipoDato == typeof(TPI.Entidades.Cursado))
+            /*  else if (tipoDato == typeof())
               {
                   List<TPI.Entidades.Cursado> lpc = (List<TPI.Entidades.Cursado>)ListaGeneral[0];
                   FormMostrarCursado formMostrarCursado = new FormMostrarCursado(lpc[filaSeleccionada]);

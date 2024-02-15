@@ -35,7 +35,6 @@
 
   <ItemGroup>
     <Folder Include="FormsSale\" />
-    <Folder Include="FormsSalesLine\" />
   </ItemGroup>
 
 </Project>

@@ -73,8 +73,8 @@ namespace DesktopUI.Product
                     DataProduct.Update(productUp, txt_name, num_stock, num_price);
                 }
 
-
                 OnListarClicked(EventArgs.Empty);
+
             }
             else
             {

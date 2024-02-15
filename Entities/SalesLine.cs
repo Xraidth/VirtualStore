@@ -27,6 +27,11 @@ namespace DB.Models
 
 
         }
+
+        public void setSubTotal(Product pro, int amount)
+        {
+            SubTotal = Math.Truncate(Convert.ToDecimal(pro.ProductPrice * amount) * 1000) / 1000;
+        }
         public SalesLine() { }
         public SalesLineGrid ToSalesLineGrid()
         {

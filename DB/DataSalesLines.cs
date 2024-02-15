@@ -17,11 +17,11 @@ namespace DB
                 return context.SalesLines.ToList();
             }
         }
-        static public SalesLine? GetOne(int sale_id, int sale_line_id) 
+        static public SalesLine? GetOne(Sale sale_get, int sale_line_id) 
         {
             using (var context = virtual_storeContext.CreateContext())
             {
-                return context.SalesLines.FirstOrDefault(x => x.Sale.SaleId == sale_id && x.LineId == sale_line_id);
+                return context.SalesLines.FirstOrDefault(x => x.Sale.SaleId == sale_get.SaleId && x.LineId == sale_line_id);
             }
         }
 
@@ -29,7 +29,7 @@ namespace DB
         {
             using (var context = virtual_storeContext.CreateContext())
             {
-                var sales_lineAdd = GetOne(sales_line.SaleId, sales_line.LineId);
+                var sales_lineAdd = GetOne(sales_line.Sale, sales_line.LineId);
                 if (sales_lineAdd == null) {
 
 
@@ -46,7 +46,7 @@ namespace DB
         {
             using (var context = virtual_storeContext.CreateContext())
             {
-                var sale_lineDel = GetOne(sale_line.SaleId, sale_line.LineId);
+                var sale_lineDel = GetOne(sale_line.Sale, sale_line.LineId);
                 if (sale_lineDel != null) {
                     context.SalesLines.Attach(sale_lineDel);
                     context.Entry(sale_lineDel).State = EntityState.Deleted;
@@ -55,16 +55,16 @@ namespace DB
             }
         }
 
-        static public void Update(Sale sale, SalesLine sale_line, Product pro, decimal sub_total, int amount)
+        static public void Update(Sale sale, SalesLine sale_line, Product pro, int amount)
         {
             using (var context = virtual_storeContext.CreateContext())
             {
-                    var sale_line_mod = GetOne(sale_line.SaleId, sale_line.LineId);
+                    var sale_line_mod = GetOne(sale_line.Sale, sale_line.LineId);
 
                     sale_line_mod.Sale = sale;
                     sale_line_mod.Product = pro;
                     sale_line_mod.SaleId = sale.SaleId;
-                    sale_line_mod.SubTotal = sub_total;
+                    sale_line_mod.setSubTotal(pro, amount);
                     sale_line_mod.Amount = amount;       
                 
                     handleAmounts(sale_line_mod);

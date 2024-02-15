@@ -41,11 +41,11 @@ namespace DB
                 }
             }
         }
-        static public void DeleteOne(int id)
+        static public void DeleteOne(Sale sale)
         {
             using (var context = virtual_storeContext.CreateContext())
             {
-                var saleDel = GetOne(id);
+                var saleDel = GetOne(sale.SaleId);
                 if (saleDel != null) {
                     context.Sales.Attach(saleDel);
                     context.Entry(saleDel).State = EntityState.Deleted;

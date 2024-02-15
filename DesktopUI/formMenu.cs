@@ -54,7 +54,7 @@ namespace DesktopUI
 
         private void tlpSales_Click(object sender, EventArgs e)
         {
-            formListar formListar = new formListar(typeof(Sale));
+            formListar formListar = new formListar(typeof(Sale), UserLogued);
             formListar.Show();
         }
 
@@ -72,7 +72,7 @@ namespace DesktopUI
 
         private void label7_Click(object sender, EventArgs e)
         {
-            formListar formListar = new formListar(typeof(Sale));
+            formListar formListar = new formListar(typeof(Sale), UserLogued);
             formListar.Show();
         }
 

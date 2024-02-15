@@ -24,6 +24,7 @@ namespace DB.Models
             ProductPrice = product_price;
         }
 
+
         public void setStock(int amount) {
             ProductStock = ProductStock - amount;
         }
