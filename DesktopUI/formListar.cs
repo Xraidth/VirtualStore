@@ -186,41 +186,6 @@ namespace Escritorio.Generalizado
                 formSaleLineAdd.ListarClicked += (s, args) => btnListar_Click(sender, e);
 
             }
-             /*else if (tipoDato == typeof(TPI.Entidades.Persona))
-             {
-                 formNuevaPersona formNuevaPersona = new formNuevaPersona();
-                 formNuevaPersona.Show();
-                 formNuevaPersona.FormClosed += (s, args) => btnListar_Click(sender, e);
-
-             }
-             else if (tipoDato == typeof(TPI.Entidades.Plan))
-             {
-                 MessageBox.Show("No implementado");
-
-             }
-             else if (tipoDato == typeof(TPI.Entidades.Usuario))
-             {
-                 formNuevoUsuario formNuevoUsuario = new formNuevoUsuario();
-                 formNuevoUsuario.Show();
-                 formNuevoUsuario.FormClosed += (s, args) => btnListar_Click(sender, e);
-             }
-             else if (tipoDato == typeof(TPI.Entidades.Comision))
-             {
-                 formCrearComision formCrearComision = new formCrearComision();
-                 formCrearComision.Show();
-                 formCrearComision.FormClosed += (s, args) => btnListar_Click(sender, e);
-             }
-             else if (tipoDato == typeof(TPI.Entidades.Especialidad))
-             {
-                 formCrearEspecialidad formCrearEspecialidad = new formCrearEspecialidad();
-                 formCrearEspecialidad.Show();
-                 formCrearEspecialidad.FormClosed += (s, args) => btnListar_Click(sender, e);
-             }
-             else if (tipoDato == typeof(TPI.Entidades.TipoDeUsuario))
-             {
-                 //No implementado
-             }
-           */
 
         }
 
@@ -253,50 +218,8 @@ namespace Escritorio.Generalizado
                  {
                      List<SalesLineGrid> lpc  =  (List<SalesLineGrid>)ListaGeneral[0];
                      var sale_to_delete = DataSalesLines.GetOne(saleAdder, lpc[filaSeleccionada].LineId);
-                     DataSalesLines.DeleteOne(sale_to_delete);
-
-
-                     //.FormClosed += (s, args) => btnListar_Click(sender, e);
-                     
+                     DataSalesLines.DeleteOne(sale_to_delete);                
                  }
-                /* else if (tipoDato == typeof(TPI.Entidades.Persona))
-                 {
-                     MessageBox.Show("No implementado");
-
-
-                 }
-                 else if (tipoDato == typeof(TPI.Entidades.Plan))
-                 {
-                     //List<TPI.Entidades.Plan> lpc = (List<TPI.Entidades.Plan>)ListaGeneral[0];
-                     //TPI.Negocio.Plan.Eliminar(lpc[filaSeleccionada]);
-                     MessageBox.Show("NO IMPLEMENTADO");
-                 }
-                 else if (tipoDato == typeof(TPI.Entidades.Usuario))
-                 {
-                     //List<TPI.Entidades.Usuario> lpc = (List<TPI.Entidades.Usuario>)ListaGeneral[0];
-                     // TPI.Negocio.Usuario.Eliminar(lpc[filaSeleccionada]); 
-                     MessageBox.Show("NO IMPLEMENTADO");
-                 }
-                 else if (tipoDato == typeof(TPI.Entidades.Comision))
-                 {
-                     List<TPI.Entidades.Comision> lpc = (List<TPI.Entidades.Comision>)ListaGeneral[0];
-                     TPI.Negocio.Comision.Eliminar(lpc[filaSeleccionada]);
-
-
-                 }
-                 else if (tipoDato == typeof(TPI.Entidades.Especialidad))
-                 {
-                     //List<TPI.Entidades.Especialidad> lpc = (List<TPI.Entidades.Especialidad>)ListaGeneral[0];
-                     //TPI.Negocio.Especialidad.Eliminar(lpc[filaSeleccionada]);
-                     MessageBox.Show("NO IMPLEMENTADO");
-                 }
-                 else if (tipoDato == typeof(TPI.Entidades.TipoDeUsuario))
-                 {
-                     //List<TPI.Entidades.TipoDeUsuario> lpc = (List<TPI.Entidades.TipoDeUsuario>)ListaGeneral[0];
-                     //TPI.Negocio.TipoDeUsuario.Eliminar(lpc[filaSeleccionada]);
-                     MessageBox.Show("NO IMPLEMENTADO");
-                 }*/
-
                 btnListar_Click(sender, e);
             }
         }
@@ -335,48 +258,8 @@ namespace Escritorio.Generalizado
                 var sale_to_update = DataSalesLines.GetOne(saleAdder, lpc[filaSeleccionada].LineId);
                 formSaleLineAdd formSaleLineAdd = new formSaleLineAdd(saleAdder);
                 formSaleLineAdd.Show();
-
-
-
-
              }
-            /* else if (tipoDato == typeof(TPI.Entidades.Persona))
-             {
-                 MessageBox.Show("NO IMPLEMENTADO");
-
-             }
-             else if (tipoDato == typeof(TPI.Entidades.Plan))
-             {
-                 MessageBox.Show("NO IMPLEMENTADO");
-             }
-             else if (tipoDato == typeof(TPI.Entidades.Usuario))
-             {
-                 MessageBox.Show("NO IMPLEMENTADO");
-             }
-             else if (tipoDato == typeof(TPI.Entidades.Comision))
-             {
-                 List<TPI.Entidades.Comision> lpc = (List<TPI.Entidades.Comision>)ListaGeneral[0];
-                 formModificarComision formModificarComision = new formModificarComision(lpc[filaSeleccionada]);
-                 formModificarComision.Show();
-                 formModificarComision.FormClosed += (s, args) => btnListar_Click(sender, e);
-
-             }
-             else if (tipoDato == typeof(TPI.Entidades.Especialidad))
-             {
-                 formModificarEspecialidad formModificarEspecialidad = new formModificarEspecialidad();
-                 formModificarEspecialidad.Show();
-                 formModificarEspecialidad.FormClosed += (s, args) => btnListar_Click(sender, e);
-
-             }
-             else if (tipoDato == typeof(TPI.Entidades.TipoDeUsuario))
-             {
-                 MessageBox.Show("NO IMPLEMENTADO");
-             }
-            */
-
-
         }
-
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             if (dgvGrilla.SelectedRows.Count == 0) { MessageBox.Show("Debe seleccionar algo para ser consultado"); return; }
@@ -399,62 +282,7 @@ namespace Escritorio.Generalizado
                   formUserConsult.Show();
                   
               }
-            /*  else if (tipoDato == typeof())
-              {
-                  List<TPI.Entidades.Cursado> lpc = (List<TPI.Entidades.Cursado>)ListaGeneral[0];
-                  FormMostrarCursado formMostrarCursado = new FormMostrarCursado(lpc[filaSeleccionada]);
-                  formMostrarCursado.Show();
-                  formMostrarCursado.FormClosed += (s, args) => btnListar_Click(sender, e);
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Materia))
-              {
-                  List<TPI.Entidades.Materia> lpc = (List<TPI.Entidades.Materia>)ListaGeneral[0];
-                  formMostrarMateria formMostrarMateria = new formMostrarMateria(lpc[filaSeleccionada]);
-                  formMostrarMateria.Show();
-                  formMostrarMateria.FormClosed += (s, args) => btnListar_Click(sender, e);
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Persona))
-              {
-                  List<TPI.Entidades.Persona> lpc = (List<TPI.Entidades.Persona>)ListaGeneral[0];
-                  formMostrarPersona formMostrarPersona = new formMostrarPersona(lpc[filaSeleccionada]);
-                  formMostrarPersona.Show();
-                  formMostrarPersona.FormClosed += (s, args) => btnListar_Click(sender, e);
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Plan))
-              {
-                  MessageBox.Show("NO IMPLEMENTADO");
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Usuario))
-              {
-                  List<TPI.Entidades.Usuario> lpc = (List<TPI.Entidades.Usuario>)ListaGeneral[0];
-                  formConsultarDatosUsuario formConsultarDatosUsuario = new formConsultarDatosUsuario(lpc[filaSeleccionada]);
-                  formConsultarDatosUsuario.Show();
-                  formConsultarDatosUsuario.FormClosed += (s, args) => btnListar_Click(sender, e);
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Comision))
-              {
-                  List<TPI.Entidades.Comision> lpc = (List<TPI.Entidades.Comision>)ListaGeneral[0];
-                  formMostrarComision formMostrarComision = new formMostrarComision(lpc[filaSeleccionada]);
-                  formMostrarComision.Show();
-                  formMostrarComision.FormClosed += (s, args) => btnListar_Click(sender, e);
-              }
-              else if (tipoDato == typeof(TPI.Entidades.Especialidad))
-              {
-                  List<TPI.Entidades.Especialidad> lpc = (List<TPI.Entidades.Especialidad>)ListaGeneral[0];
-                  formMostrarEspecialidad formMostrarEspecialidad = new formMostrarEspecialidad(lpc[filaSeleccionada]);
-                  formMostrarEspecialidad.Show();
-                  formMostrarEspecialidad.FormClosed += (s, args) => btnListar_Click(sender, e);
-              }
-              else if (tipoDato == typeof(TPI.Entidades.TipoDeUsuario))
-              {
-                  MessageBox.Show("NO IMPLEMENTADO");
-              }
-            */
         }
-
-
-
-
     }
 }
 
