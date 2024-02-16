@@ -35,7 +35,7 @@ namespace DesktopUI
             
             try
             {
-                DataConfig.ConfigDB();
+                DataUser.createAdmin();
             }
             catch (Exception ex)
             {                

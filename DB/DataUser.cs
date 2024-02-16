@@ -66,6 +66,7 @@ namespace DB
                 }
          }
 
+
         static public User? SignIn(string user_name, string user_password)
         {
             using (var context = virtual_storeContext.CreateContext())
@@ -73,9 +74,17 @@ namespace DB
                 return context.Users.FirstOrDefault(x => x.UserName == user_name && x.UserPassword == user_password);
             }
         }
-        
 
-       
+        static public void createAdmin()
+        {
+            
+            if (SignIn("admin","admin") == null)
+            {
+                var user_Admin = new User("admin", "admin");
+                Insert(user_Admin);
+            }
+            
+        }
     }
 
 }

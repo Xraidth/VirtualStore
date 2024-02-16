@@ -50,7 +50,16 @@ namespace DB
             string connectionString = configuration.GetConnectionString("MyDatabaseConnection");
             optionsBuilder.UseMySql(connectionString, ServerVersion.Parse("8.0.36-mysql"));
 
-            return new virtual_storeContext(optionsBuilder.Options);
+            var options = optionsBuilder.Options;
+
+            var context = new virtual_storeContext(options);
+
+            if (!context.Database.CanConnect())
+            {
+                context.Database.Migrate();
+            }
+
+            return context;
         }
 
 
@@ -168,9 +177,5 @@ namespace DB
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-        public void EnsureDatabaseCreated()
-        {
-            this.Database.EnsureCreated();
-        }
     }
 }
