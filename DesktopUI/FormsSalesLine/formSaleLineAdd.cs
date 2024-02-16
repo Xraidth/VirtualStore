@@ -62,8 +62,8 @@ namespace DesktopUI.FormsSalesLine
                 {
                     if (btnAdd.Text.Contains("Add"))
                     {
-                        int salelineLastId = DataSalesLines.saleslineSearcher(sale_adder.SaleId).Count; 
-                        SalesLine new_sale_line = new SalesLine(sale_adder, product_adder, amu, salelineLastId+1);
+                        int salelineLastId = DataSalesLines.saleslineSearcher(sale_adder.SaleId).Count;
+                        SalesLine new_sale_line = new SalesLine(sale_adder, product_adder, amu, salelineLastId + 1);
                         DataSalesLines.Insert(new_sale_line);
                     }
                     else
@@ -88,6 +88,7 @@ namespace DesktopUI.FormsSalesLine
 
         private void formSaleLineAdd_Load(object sender, EventArgs e)
         {
+            this.KeyPreview = true;
             loadSelectProduct();
         }
         private void loadSelectProduct()
@@ -140,6 +141,29 @@ namespace DesktopUI.FormsSalesLine
         {
             btnAdd.PerformClick();
             this.Close();
+        }
+
+        private void formSaleLineAdd_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.D1:
+                case Keys.NumPad1:
+                    btnCancel.PerformClick();
+                    break;
+                case Keys.D2:
+                case Keys.NumPad2:
+                    btnAdd.PerformClick();
+                    break;
+                case Keys.D3:
+                case Keys.NumPad3:
+                    btnApply.PerformClick();
+                    break;
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+            }
         }
     }
 }

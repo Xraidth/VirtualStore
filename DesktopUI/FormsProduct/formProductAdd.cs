@@ -93,5 +93,34 @@ namespace DesktopUI.Product
             btnAdd.PerformClick();
             this.Close();
         }
+
+        private void formProductAdd_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.D1:
+                case Keys.NumPad1:
+                    btnCancel.PerformClick();
+                    break;
+                case Keys.D2:
+                case Keys.NumPad2:
+                    btnAdd.PerformClick();
+                    break;
+                case Keys.D3:
+                case Keys.NumPad3:
+                    btnApply.PerformClick();
+                    break;
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+            }
+        }
+
+        private void formProductAdd_Load(object sender, EventArgs e)
+        {
+            
+            this.KeyPreview = true;
+        }
     }
 }

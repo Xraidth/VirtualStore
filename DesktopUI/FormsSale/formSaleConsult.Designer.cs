@@ -126,6 +126,8 @@
             Name = "formSaleConsult";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "formSaleConsult";
+            Load += formSaleConsult_Load;
+            KeyDown += formSaleConsult_KeyDown;
             ResumeLayout(false);
             PerformLayout();
         }

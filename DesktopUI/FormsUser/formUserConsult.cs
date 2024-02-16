@@ -21,9 +21,21 @@ namespace DesktopUI.FormsUser
 
         private void formUserConsult_Load(object sender, EventArgs e)
         {
+            this.KeyPreview = true;
             lblID.Text = Convert.ToString(UserConsult.UserId);
             lblUserName.Text = UserConsult.UserName;
             lblPass.Text = UserConsult.UserPassword;
+        }
+
+        private void formUserConsult_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+            }
         }
     }
 }

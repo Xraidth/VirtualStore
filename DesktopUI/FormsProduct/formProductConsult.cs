@@ -21,10 +21,22 @@ namespace DesktopUI.FormsProduct
 
         private void formProductConsult_Load(object sender, EventArgs e)
         {
+            this.KeyPreview = true;
             lblID.Text = Convert.ToString(ProductConsult.ProductId);
             lblName.Text = ProductConsult.ProductName;
             lblStock.Text = Convert.ToString(ProductConsult.ProductStock); ;
             lblPrice.Text = Convert.ToString(ProductConsult.ProductPrice);
+        }
+
+        private void formProductConsult_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+               case Keys.Escape:
+                    this.Close();
+                    break;
+
+            }
         }
     }
 }

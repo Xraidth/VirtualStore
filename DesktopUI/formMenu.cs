@@ -98,6 +98,9 @@ namespace DesktopUI
                 case Keys.NumPad3:
                     productsToolStripMenuItem.PerformClick();
                     break;
+                case Keys.Escape:
+                    this.Close();
+                    break;
 
             }
         }

@@ -25,11 +25,24 @@ namespace DesktopUI.FormsSale
         {
             lblSaleId.Text = sale_sale.SaleId.ToString();
             lblSaleDay.Text = sale_sale.SaleDay.ToString();
-            lblUserName.Text = DataUser.GetOne(sale_sale.UserId).ToString();
+            lblUserName.Text = DataUser.GetOne(sale_sale.UserId).UserName.ToString();
             lblTotal.Text = sale_sale.Total.ToString();
         }
-        
 
+        private void formSaleConsult_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
 
+            }
+        }
+
+        private void formSaleConsult_Load(object sender, EventArgs e)
+        {
+            this.KeyPreview = true;
+        }
     }
 }

@@ -127,6 +127,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "formProductConsult";
             Load += formProductConsult_Load;
+            KeyDown += formProductConsult_KeyDown;
             ResumeLayout(false);
             PerformLayout();
         }

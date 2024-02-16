@@ -15,15 +15,16 @@ namespace DesktopUI.FormsSalesLine
     public partial class formSaleLineConsult : Form
     {
         public SalesLine sale_line;
-        public formSaleLineConsult(SalesLine sale_show )
+        public formSaleLineConsult(SalesLine sale_show)
         {
             InitializeComponent();
             sale_line = sale_show;
         }
-        
+
 
         private void formSaleLineConsult_Load(object sender, EventArgs e)
         {
+            this.KeyPreview = true;
             LoadShowSaleLine();
         }
 
@@ -34,6 +35,17 @@ namespace DesktopUI.FormsSalesLine
             lblProductName.Text = product.ProductName;
             lblProductId.Text = sale_line.ProductId.ToString();
             lblProductAmount.Text = sale_line.Amount.ToString();
+        }
+
+        private void formSaleLineConsult_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+            }
         }
     }
 }

@@ -260,6 +260,7 @@ namespace Escritorio.Generalizado
             StartPosition = FormStartPosition.CenterScreen;
             Text = "formListar";
             Load += formListar_Load;
+            KeyDown += formListar_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             toolStrip1.ResumeLayout(false);

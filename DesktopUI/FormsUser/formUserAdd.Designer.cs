@@ -36,6 +36,7 @@
             txtUserName = new TextBox();
             txtPass = new TextBox();
             txtConPass = new TextBox();
+            btnApply = new Button();
             SuspendLayout();
             // 
             // label1
@@ -67,7 +68,7 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(196, 286);
+            btnAdd.Location = new Point(106, 286);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(75, 23);
             btnAdd.TabIndex = 10;
@@ -77,7 +78,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(23, 286);
+            btnCancel.Location = new Point(17, 286);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 11;
@@ -108,11 +109,22 @@
             txtConPass.Size = new Size(100, 23);
             txtConPass.TabIndex = 14;
             // 
+            // btnApply
+            // 
+            btnApply.Location = new Point(201, 286);
+            btnApply.Name = "btnApply";
+            btnApply.Size = new Size(75, 23);
+            btnApply.TabIndex = 17;
+            btnApply.Text = "Apply";
+            btnApply.UseVisualStyleBackColor = true;
+            btnApply.Click += btnApply_Click;
+            // 
             // formUserAdd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(294, 356);
+            ClientSize = new Size(294, 339);
+            Controls.Add(btnApply);
             Controls.Add(txtConPass);
             Controls.Add(txtPass);
             Controls.Add(txtUserName);
@@ -124,6 +136,8 @@
             Name = "formUserAdd";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "formUserAdd";
+            Load += formUserAdd_Load;
+            KeyDown += formUserAdd_KeyDown;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -137,5 +151,6 @@
         private TextBox txtUserName;
         private TextBox txtPass;
         private TextBox txtConPass;
+        private Button btnApply;
     }
 }
