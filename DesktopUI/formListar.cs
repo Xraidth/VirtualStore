@@ -15,6 +15,7 @@ using DesktopUI.Product;
 using DesktopUI.FormsProduct;
 using DesktopUI.FormsUser;
 using DesktopUI.FormsSalesLine;
+using DesktopUI.FormsSale;
 
 namespace Escritorio.Generalizado
 {
@@ -282,6 +283,22 @@ namespace Escritorio.Generalizado
                   formUserConsult.Show();
                   
               }
+              else if (tipoDato == typeof(SalesLine))
+              {
+                List<SalesLineGrid> lpc = (List<SalesLineGrid>)ListaGeneral[0];
+                var sale_to_sw = DataSalesLines.GetOne(saleAdder, lpc[filaSeleccionada].LineId);
+                formSaleLineConsult formSaleLineConsult = new formSaleLineConsult(sale_to_sw);
+                formSaleLineConsult.Show();
+
+            }
+            else if (tipoDato == typeof(Sale))
+            {
+                List<SaleGrid> lpc = (List<SaleGrid>)ListaGeneral[0];
+                var sale_to_sw = DataSale.GetOne(lpc[filaSeleccionada].SaleId);
+                formSaleConsult FormSaleConsult = new formSaleConsult(sale_to_sw);
+                FormSaleConsult.Show();
+
+            }
         }
     }
 }
