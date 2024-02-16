@@ -29,5 +29,18 @@ namespace DesktopUI
                 MessageBox.Show("Error in user authentication");
             }
         }
+
+        private void formLogin_Load(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                DataConfig.ConfigDB();
+            }
+            catch (Exception ex)
+            {                
+                MessageBox.Show("Error al crear la base de datos: " + ex.Message);
+            }
+        }
     }
 }

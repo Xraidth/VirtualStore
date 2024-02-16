@@ -167,5 +167,10 @@ namespace DB
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public void EnsureDatabaseCreated()
+        {
+            this.Database.EnsureCreated();
+        }
     }
 }

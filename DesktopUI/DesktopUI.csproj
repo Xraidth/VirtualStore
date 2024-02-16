@@ -6,11 +6,28 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Title>VirtualStore</Title>
+    <Description>Sofware of Store Administration</Description>
+    <Company>SistemasIg</Company>
+    <PackageIcon>icono.VirstualStore.png</PackageIcon>
+    <ApplicationIcon>iconoroot.ico</ApplicationIcon>
+    <AssemblyName>VirtualStore</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="FormsSale\formSaleAdd.cs" />
     <Compile Remove="FormsSale\formSaleAdd.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="iconoroot.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\Images\icono.VirstualStore.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
