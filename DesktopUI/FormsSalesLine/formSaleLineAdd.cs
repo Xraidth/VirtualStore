@@ -62,8 +62,8 @@ namespace DesktopUI.FormsSalesLine
                 {
                     if (btnAdd.Text.Contains("Add"))
                     {
-
-                        SalesLine new_sale_line = new SalesLine(sale_adder, product_adder, amu);
+                        int salelineLastId = DataSalesLines.saleslineSearcher(sale_adder.SaleId).Count; 
+                        SalesLine new_sale_line = new SalesLine(sale_adder, product_adder, amu, salelineLastId+1);
                         DataSalesLines.Insert(new_sale_line);
                     }
                     else

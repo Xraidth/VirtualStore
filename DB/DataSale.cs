@@ -47,6 +47,15 @@ namespace DB
             {
                 var saleDel = GetOne(sale.SaleId);
                 if (saleDel != null) {
+                    
+                    
+                    
+                    foreach (var item in DataSalesLines.saleslineSearcher(saleDel.SaleId))
+                    {
+                        DataSalesLines.DeleteOne(item);
+                    }
+
+
                     context.Sales.Attach(saleDel);
                     context.Entry(saleDel).State = EntityState.Deleted;
                     context.SaveChanges();

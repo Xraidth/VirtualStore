@@ -15,9 +15,9 @@ namespace DB.Models
         public virtual Product Product { get; set; } = null!;
         public virtual Sale Sale { get; set; } = null!;
 
-        public SalesLine(Sale sale, Product pro, int amount)
+        public SalesLine(Sale sale, Product pro, int amount, int saleLine_id)
         {
-
+            LineId = saleLine_id;
             SaleId = sale.SaleId;
             ProductId = pro.ProductId;
             Amount = amount;

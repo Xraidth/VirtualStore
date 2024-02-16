@@ -40,7 +40,7 @@ namespace DB
 
 
                     handleAmounts(sales_line);
-                    context.SalesLines.Attach(sales_line);
+                  
                     context.Entry(sales_line).State = EntityState.Added;
                     
                     context.SaveChanges();
@@ -56,9 +56,8 @@ namespace DB
                 var saleserched = DataSale.GetOne(sale_lineDel.SaleId);
 
                 if (sale_lineDel != null) {
-                    
-                    product_saleline.setStock(-(sale_lineDel.Amount));
 
+                    DataProduct.setStock(product_saleline, -(sale_lineDel.Amount));
                     DataSale.setTotal(saleserched, -(sale_lineDel.SubTotal));
 
                     context.SalesLines.Attach(sale_lineDel);
@@ -103,7 +102,10 @@ namespace DB
         {
             using (var context = virtual_storeContext.CreateContext())
             {
-                return context.SalesLines.Where(x=>x.SaleId == sale_id).ToList();
+                return context.SalesLines
+                    .Include(x => x.Sale)
+                    .Include(x => x.Product)
+                    .Where(x=>x.SaleId == sale_id).ToList();
             }
         }
 
