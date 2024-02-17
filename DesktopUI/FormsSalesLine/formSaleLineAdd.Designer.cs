@@ -146,6 +146,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "formSaleLineAdd";
             Load += formSaleLineAdd_Load;
+            Shown += formSaleLineAdd_Shown;
             KeyDown += formSaleLineAdd_KeyDown;
             ((System.ComponentModel.ISupportInitialize)nudAmount).EndInit();
             ResumeLayout(false);

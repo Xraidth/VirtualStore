@@ -16,6 +16,7 @@ using DesktopUI.FormsProduct;
 using DesktopUI.FormsUser;
 using DesktopUI.FormsSalesLine;
 using DesktopUI.FormsSale;
+using System.Xml.Linq;
 
 namespace Escritorio.Generalizado
 {
@@ -304,8 +305,13 @@ namespace Escritorio.Generalizado
 
         private void formListar_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
+            if (!txtConsulta.Focused) { 
+                switch (e.KeyCode)
             {
+                case Keys.D0:
+                case Keys.NumPad0:
+                    this.Close();
+                    break;
                 case Keys.D1:
                 case Keys.NumPad1:
                     btnListar.PerformClick();
@@ -330,6 +336,7 @@ namespace Escritorio.Generalizado
                     this.Close();
                     break;
 
+            }
             }
         }
     }

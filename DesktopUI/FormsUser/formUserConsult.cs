@@ -31,6 +31,10 @@ namespace DesktopUI.FormsUser
         {
             switch (e.KeyCode)
             {
+                case Keys.D0:
+                case Keys.NumPad0:
+                    this.Close();
+                    break;
                 case Keys.Escape:
                     this.Close();
                     break;

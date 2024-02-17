@@ -32,7 +32,11 @@ namespace DesktopUI.FormsProduct
         {
             switch (e.KeyCode)
             {
-               case Keys.Escape:
+                case Keys.D0:
+                case Keys.NumPad0:
+                    this.Close();
+                    break;
+                case Keys.Escape:
                     this.Close();
                     break;
 

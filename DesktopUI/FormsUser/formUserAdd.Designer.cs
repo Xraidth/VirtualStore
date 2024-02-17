@@ -137,6 +137,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "formUserAdd";
             Load += formUserAdd_Load;
+            Shown += formUserAdd_Shown;
             KeyDown += formUserAdd_KeyDown;
             ResumeLayout(false);
             PerformLayout();

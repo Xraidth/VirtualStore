@@ -145,25 +145,38 @@ namespace DesktopUI.FormsSalesLine
 
         private void formSaleLineAdd_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
+            if (!txtProductID.Focused && !nudAmount.Focused)
             {
-                case Keys.D1:
-                case Keys.NumPad1:
-                    btnCancel.PerformClick();
-                    break;
-                case Keys.D2:
-                case Keys.NumPad2:
-                    btnAdd.PerformClick();
-                    break;
-                case Keys.D3:
-                case Keys.NumPad3:
-                    btnApply.PerformClick();
-                    break;
-                case Keys.Escape:
-                    this.Close();
-                    break;
+                switch (e.KeyCode)
+                {
+                    case Keys.D0:
+                    case Keys.NumPad0:
+                        this.Close();
+                        break;
+                    case Keys.D1:
+                    case Keys.NumPad1:
+                        btnCancel.PerformClick();
+                        break;
+                    case Keys.D2:
+                    case Keys.NumPad2:
+                        btnAdd.PerformClick();
+                        break;
+                    case Keys.D3:
+                    case Keys.NumPad3:
+                        btnApply.PerformClick();
+                        break;
+                    case Keys.Escape:
+                        this.Close();
+                        break;
+
+                }
 
             }
+        }
+
+        private void formSaleLineAdd_Shown(object sender, EventArgs e)
+        {
+            txtProductID.Focus();
         }
     }
 }

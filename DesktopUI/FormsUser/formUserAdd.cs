@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace DesktopUI.FormsUser
 {
@@ -100,26 +101,33 @@ namespace DesktopUI.FormsUser
 
         private void formUserAdd_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
+            if (!txtUserName.Focused && !txtPass.Focused && !txtConPass.Focused)
             {
-                case Keys.D1:
-                case Keys.NumPad1:
-                    btnCancel.PerformClick();
-                    break;
-                case Keys.D2:
-                case Keys.NumPad2:
-                    btnAdd.PerformClick();
-                    break;
-                case Keys.D3:
-                case Keys.NumPad3:
-                    btnApply.PerformClick();
-                    break;
-                case Keys.Escape:
-                    this.Close();
-                    break;
+                switch (e.KeyCode)
+                {
+                    case Keys.D1:
+                    case Keys.NumPad1:
+                        btnCancel.PerformClick();
+                        break;
+                    case Keys.D2:
+                    case Keys.NumPad2:
+                        btnAdd.PerformClick();
+                        break;
+                    case Keys.D3:
+                    case Keys.NumPad3:
+                        btnApply.PerformClick();
+                        break;
+                    case Keys.Escape:
+                        this.Close();
+                        break;
 
+                }
             }
+        }
 
+        private void formUserAdd_Shown(object sender, EventArgs e)
+        {
+            txtUserName.Focus();
         }
     }
 }

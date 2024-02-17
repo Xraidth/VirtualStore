@@ -36,7 +36,7 @@ namespace DesktopUI
 
         private void salesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            formListar formListar = new formListar(typeof(Sale));
+            formListar formListar = new formListar(typeof(Sale),UserLogued);
             formListar.Show();
         }
 
@@ -86,6 +86,10 @@ namespace DesktopUI
         {
             switch (e.KeyCode)
             {
+                case Keys.D0:
+                case Keys.NumPad0:
+                    this.Close();
+                    break;
                 case Keys.D1:
                 case Keys.NumPad1:
                     usersToolStripMenuItem.PerformClick();

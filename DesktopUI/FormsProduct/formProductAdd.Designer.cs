@@ -141,6 +141,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "formProductAdd";
             Load += formProductAdd_Load;
+            Shown += formProductAdd_Shown;
             KeyDown += formProductAdd_KeyDown;
             ((System.ComponentModel.ISupportInitialize)nudStock).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudPrice).EndInit();
