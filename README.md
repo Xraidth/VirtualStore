@@ -10,7 +10,7 @@
 <h4>Beta Version (Unstable)</h4>
 
 <p>Download the version 1.0.0.1: <a href="https://download848.mediafire.com/stuo1xtm4angH2WOYNBpoWbEUW83EyCI6OWw-mGHmkc9ti2yREAQamPVnat6BML6d95lLwntu2KL8BC_kBjguMSTsKsA2r-frp52y0O6zT55iUtZBuc9P14VsnFfsXE-2XtMiUqYLhbaopdC4i511QwGdTgFNFBiEOJhkXBeRJXkaQ/613w31l9a42pxhg/VirtualStore.Setup.exe">VirtualStore.exe</a>. <br></br>
-Please note that this is a beta version and may contain bugs. Your feedback is valuable in helping me improve the application.</p>
+Please note that this is a beta version and may contain bugs. Your feedback is valuable in helping me to improve the application.</p>
 
 
 <h3>Contribution</h3>
