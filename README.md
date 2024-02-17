@@ -1,6 +1,6 @@
 <h1> VirtualStore</h1>
 
-</h3>Welcome to VirtualStore2.0</h3>
+</h3>Welcome to VirtualStore</h3>
 
 <h3>Goals</h3>
 <p>This project arises as software for stores and as a method to learn C#</p>
