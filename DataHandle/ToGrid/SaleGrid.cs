@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DB.ToGrid
+namespace GR.ToGrid
 {
     public class SaleGrid
     {

@@ -1,5 +1,5 @@
 using DB;
-using DB.Models;
+using EF.Models;
 
 namespace DesktopUI
 {

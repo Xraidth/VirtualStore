@@ -12,8 +12,8 @@ namespace DesktopUI.FormsProduct
 {
     public partial class formProductConsult : Form
     {
-        public DB.Models.Product? ProductConsult { get; set; }
-        public formProductConsult(DB.Models.Product product_consult)
+        public EF.Models.Product? ProductConsult { get; set; }
+        public formProductConsult(EF.Models.Product product_consult)
         {
             InitializeComponent();
             ProductConsult = product_consult;

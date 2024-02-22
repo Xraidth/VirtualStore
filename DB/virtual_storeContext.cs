@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Configuration;
-using DB.Models;
+using EF.Models;
 using System.Configuration.Provider;
 using Microsoft.Extensions.Configuration;
 

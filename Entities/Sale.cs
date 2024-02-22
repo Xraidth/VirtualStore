@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using DB.ToGrid;
+using GR.ToGrid;
 
-namespace DB.Models
+namespace EF.Models
 {
     public partial class Sale
     {

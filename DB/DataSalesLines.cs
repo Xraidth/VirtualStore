@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Configuration;
-using DB.Models;
+using EF.Models;
 using ZstdSharp.Unsafe;
 
 namespace DB
@@ -81,7 +81,7 @@ namespace DB
                 
                     handleAmounts(sale_line_mod);
 
-                    context.SalesLines.Attach(sale_line_mod);
+                    
                     context.Entry(sale_line_mod).State = EntityState.Modified;
                     context.SaveChanges();
                 }

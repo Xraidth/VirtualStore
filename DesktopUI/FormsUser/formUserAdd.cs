@@ -1,5 +1,5 @@
 ﻿using DB;
-using DB.Models;
+using EF.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,12 +16,12 @@ namespace DesktopUI.FormsUser
     public delegate void ListarEventHandler(object sender, EventArgs e);
     public partial class formUserAdd : Form
     {
-        public DB.Models.User? userUp;
+        public EF.Models.User? userUp;
         public formUserAdd()
         {
             InitializeComponent();
         }
-        public formUserAdd(DB.Models.User user_update)
+        public formUserAdd(EF.Models.User user_update)
         {
             InitializeComponent();
             userUp = user_update;

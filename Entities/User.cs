@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DB.Models
+namespace EF.Models
 {
     public partial class User
     {

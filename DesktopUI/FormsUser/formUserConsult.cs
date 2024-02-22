@@ -12,8 +12,8 @@ namespace DesktopUI.FormsUser
 {
     public partial class formUserConsult : Form
     {
-        public DB.Models.User? UserConsult { get; set; }
-        public formUserConsult(DB.Models.User user_consult)
+        public EF.Models.User? UserConsult { get; set; }
+        public formUserConsult(EF.Models.User user_consult)
         {
             InitializeComponent();
             UserConsult = user_consult;

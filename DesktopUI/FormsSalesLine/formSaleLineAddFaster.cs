@@ -12,9 +12,10 @@ using EF.Models;
 
 namespace DesktopUI.FormsSalesLine
 {
-    public delegate void ListarEventHandler(object sender, EventArgs e);
-    public partial class formSaleLineAdd : Form
+
+    public partial class formSaleLineAddFaster : Form
     {
+
         private EF.Models.Product? product_adder;
 
         private List<EF.Models.Product> products;
@@ -22,14 +23,13 @@ namespace DesktopUI.FormsSalesLine
         private SalesLine saleLine_updater;
 
         private Sale sale_adder;
-
-        public formSaleLineAdd(Sale sale_add)
+        public formSaleLineAddFaster(Sale sale_add)
         {
             InitializeComponent();
             sale_adder = sale_add;
         }
 
-        public formSaleLineAdd(Sale sale_add, SalesLine sale_line_up)
+        public formSaleLineAddFaster(Sale sale_add, SalesLine sale_line_up)
         {
             InitializeComponent();
             sale_adder = sale_add;
@@ -40,21 +40,21 @@ namespace DesktopUI.FormsSalesLine
         private void LoadUpdateSaleline()
         {
             btnAdd.Text = "Update";
-            cbxProductName.SelectedValue = saleLine_updater.Product.ProductId;
             txtProductID.Text = saleLine_updater.Product.ProductId.ToString();
             nudAmount.Value = Convert.ToDecimal(saleLine_updater.Amount);
         }
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         public event ListarEventHandler ListarClicked;
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (txtProductID.Text != "") { 
+            int pa_id = Convert.ToInt32(txtProductID.Text);
+            product_adder = DataProduct.GetOne(pa_id);
+            }
+            else { MessageBox.Show("Complete all the filds"); }
+
             int amu = Convert.ToInt32(nudAmount.Value);
-            if (product_adder != null || amu >= 0)
+            if (product_adder != null && amu >= 0)
             {
 
 
@@ -84,51 +84,13 @@ namespace DesktopUI.FormsSalesLine
 
             OnListarClicked(EventArgs.Empty);
 
+            this.Close();
         }
 
-        private void formSaleLineAdd_Load(object sender, EventArgs e)
+        private void formSaleLineAddFaster_Load(object sender, EventArgs e)
         {
             this.KeyPreview = true;
-            loadSelectProduct();
-        }
-        private void loadSelectProduct()
-        {
-            cbxProductName.DisplayMember = "ProductName";
-            cbxProductName.ValueMember = "ProductId";
-            cbxProductName.Enabled = true;
-            cbxProductName.SelectedIndex = -1;
-            products = DataProduct.GetAll();
-            cbxProductName.DataSource = products;
-        }
-
-        private void cbxProductName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var proID = Convert.ToInt32(cbxProductName.SelectedValue);
-
-            product_adder = DataProduct.GetOne(proID);
-        }
-
-        private void txtProductID_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (int.TryParse(txtProductID.Text, out int filter))
-                {
-                    var filteredProducts = products.Where(pro => pro.ProductId == filter).ToList();
-                    cbxProductName.DataSource = filteredProducts;
-                    cbxProductName.DisplayMember = "ProductName";
-                    cbxProductName.ValueMember = "ProductId";
-                }
-                else
-                {
-                    cbxProductName.DataSource = products;
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            
 
         }
 
@@ -137,13 +99,7 @@ namespace DesktopUI.FormsSalesLine
             ListarClicked?.Invoke(this, e);
         }
 
-        private void btnApply_Click(object sender, EventArgs e)
-        {
-            btnAdd.PerformClick();
-            this.Close();
-        }
-
-        private void formSaleLineAdd_KeyDown(object sender, KeyEventArgs e)
+        private void formSaleLineAddFaster_KeyDown(object sender, KeyEventArgs e)
         {
             if (!txtProductID.Focused && !nudAmount.Focused)
             {
@@ -155,15 +111,7 @@ namespace DesktopUI.FormsSalesLine
                         break;
                     case Keys.D1:
                     case Keys.NumPad1:
-                        btnCancel.PerformClick();
-                        break;
-                    case Keys.D2:
-                    case Keys.NumPad2:
                         btnAdd.PerformClick();
-                        break;
-                    case Keys.D3:
-                    case Keys.NumPad3:
-                        btnApply.PerformClick();
                         break;
                     case Keys.Escape:
                         this.Close();
@@ -172,11 +120,6 @@ namespace DesktopUI.FormsSalesLine
                 }
 
             }
-        }
-
-        private void formSaleLineAdd_Shown(object sender, EventArgs e)
-        {
-            txtProductID.Focus();
         }
     }
 }

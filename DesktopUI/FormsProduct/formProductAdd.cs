@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DB.Models;
+using EF.Models;
 namespace DesktopUI.Product
 {
     public delegate void ListarEventHandler(object sender, EventArgs e);
@@ -16,7 +16,7 @@ namespace DesktopUI.Product
 
     public partial class formProductAdd : Form
     {
-        private DB.Models.Product? productUp;
+        private EF.Models.Product? productUp;
 
 
         public formProductAdd()
@@ -24,7 +24,7 @@ namespace DesktopUI.Product
             InitializeComponent();
         }
 
-        public formProductAdd(DB.Models.Product product_up)
+        public formProductAdd(EF.Models.Product product_up)
         {
             InitializeComponent();
             productUp = product_up;
@@ -64,7 +64,7 @@ namespace DesktopUI.Product
 
                 if (btnAdd.Text.ToString().Contains("Add"))
                 {
-                    var new_product = new DB.Models.Product(txt_name, num_stock, num_price);
+                    var new_product = new EF.Models.Product(txt_name, num_stock, num_price);
                     DataProduct.Insert(new_product);
                 }
                 else

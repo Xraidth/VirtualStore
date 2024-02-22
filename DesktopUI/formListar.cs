@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
-using DB.Models;
+using EF.Models;
 using DB;
-using DB.ToGrid;
+using GR.ToGrid;
 using DesktopUI.Product;
 using DesktopUI.FormsProduct;
 using DesktopUI.FormsUser;
@@ -103,6 +103,12 @@ namespace Escritorio.Generalizado
             {
                 List<SalesLine> sales_lines = (saleAdder != null) ? DataSalesLines.saleslineSearcher(Convert.ToInt32(saleAdder.SaleId)) : DataSalesLines.GetAll();
                 var sales_linesGrid = sales_lines.Select(s => s.ToSalesLineGrid()).ToList();
+
+                foreach (var slg in sales_linesGrid)
+                {
+                    slg.ProductName = DataProduct.GetOne(slg.ProductId).ProductName;
+                }
+
                 ListaGeneral.Add(sales_linesGrid);
             }
             else if (tipoDato == typeof(User))
@@ -138,6 +144,12 @@ namespace Escritorio.Generalizado
             {
                 List<SalesLine> sales_lines = (saleAdder.SaleId != null) ? DataSalesLines.saleslineSearcher(Convert.ToInt32(saleAdder.SaleId)) : DataSalesLines.GetAll();
                 var sales_linesGrid = sales_lines.Select(s => s.ToSalesLineGrid()).ToList();
+                
+                foreach (var slg in sales_linesGrid)
+                {
+                    slg.ProductName = DataProduct.GetOne(slg.ProductId).ProductName;
+                }
+
                 ListaGeneral.Add(sales_linesGrid.Where(x => x.SaleId.ToString().Contains(consulta)).ToList());
             }
             else if (tipoDato == typeof(User))
@@ -184,9 +196,9 @@ namespace Escritorio.Generalizado
             }
             else if (tipoDato == typeof(SalesLine))
             {
-                formSaleLineAdd formSaleLineAdd = new formSaleLineAdd(saleAdder);
-                formSaleLineAdd.Show();
-                formSaleLineAdd.ListarClicked += (s, args) => btnListar_Click(sender, e);
+                formSaleLineAddFaster formSaleLineAddFaster = new formSaleLineAddFaster(saleAdder);
+                formSaleLineAddFaster.Show();
+                formSaleLineAddFaster.ListarClicked += (s, args) => btnListar_Click(sender, e);
 
             }
 
@@ -259,8 +271,9 @@ namespace Escritorio.Generalizado
             {
                 List<SalesLineGrid> lpc = (List<SalesLineGrid>)ListaGeneral[0];
                 var sale_to_update = DataSalesLines.GetOne(saleAdder, lpc[filaSeleccionada].LineId);
-                formSaleLineAdd formSaleLineAdd = new formSaleLineAdd(saleAdder);
-                formSaleLineAdd.Show();
+                formSaleLineAddFaster formSaleLineAddFaster = new formSaleLineAddFaster(saleAdder, sale_to_update);
+                formSaleLineAddFaster.Show();
+                formSaleLineAddFaster.ListarClicked += (s, args) => btnListar_Click(sender, e);
             }
         }
         private void btnConsultar_Click(object sender, EventArgs e)

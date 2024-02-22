@@ -9,14 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DB.Models;
+using EF.Models;
 
 namespace DesktopUI
 {
     public partial class formMenu : Form
     {
-        public DB.Models.User UserLogued;
-        public formMenu(DB.Models.User user_logued)
+        public EF.Models.User UserLogued;
+        public formMenu(EF.Models.User user_logued)
         {
             InitializeComponent();
             UserLogued = user_logued;
@@ -30,7 +30,7 @@ namespace DesktopUI
 
         private void productsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            formListar formListar = new formListar(typeof(DB.Models.Product));
+            formListar formListar = new formListar(typeof(EF.Models.Product));
             formListar.Show();
         }
 
@@ -60,7 +60,7 @@ namespace DesktopUI
 
         private void tlpDepo_Click(object sender, EventArgs e)
         {
-            formListar formListar = new formListar(typeof(DB.Models.Product));
+            formListar formListar = new formListar(typeof(EF.Models.Product));
             formListar.Show();
         }
 
@@ -78,7 +78,7 @@ namespace DesktopUI
 
         private void label10_Click(object sender, EventArgs e)
         {
-            formListar formListar = new formListar(typeof(DB.Models.Product));
+            formListar formListar = new formListar(typeof(EF.Models.Product));
             formListar.Show();
         }
 
