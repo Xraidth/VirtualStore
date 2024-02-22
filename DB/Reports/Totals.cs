@@ -27,13 +27,26 @@ namespace DB.Reports
 
 
 
-            foreach (var (s, indice) in salesPerDay.Select((value, index) => (value, index)))
+            foreach (var s in salesPerDay)
             {
                 
                 var cal_ts = Math.Truncate(Convert.ToDecimal(s.Total) * 1000) / 1000;
-                var ts = new TotalSale(indice, s.SaleDay, cal_ts);
+                var ts = new TotalSale(s.SaleDay, cal_ts);
                 sale_totals.Add(ts);
             }
+
+            sale_totals = sale_totals.OrderByDescending(sp => sp.SaleDate).ToList();
+
+
+
+            int saleId = 1;
+            foreach (var item in sale_totals)
+            {
+                item.SaleId = saleId;
+                saleId++;
+            }
+
+
 
             return sale_totals;
         }

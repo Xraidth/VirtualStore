@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EF.Models;
+using DesktopUI.Reports;
 
 namespace DesktopUI
 {
@@ -36,7 +37,7 @@ namespace DesktopUI
 
         private void salesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            formListar formListar = new formListar(typeof(Sale),UserLogued);
+            formListar formListar = new formListar(typeof(Sale), UserLogued);
             formListar.Show();
         }
 
@@ -111,7 +112,26 @@ namespace DesktopUI
 
         private void formMenu_Load(object sender, EventArgs e)
         {
-            lblUserLogued.Text = UserLogued.UserName;  
+            lblUserLogued.Text = UserLogued.UserName;
+        }
+
+        private void pbxReports_Click(object sender, EventArgs e)
+        {
+            formMenuReports formMenuReports = new formMenuReports();
+            formMenuReports.Show();
+        }
+
+        private void tlpReports_Click(object sender, EventArgs e)
+        {
+            formMenuReports formMenuReports = new formMenuReports();
+            formMenuReports.Show();
+        }
+
+        private void lblReports_Click(object sender, EventArgs e)
+        {
+            formMenuReports formMenuReports = new formMenuReports();
+            formMenuReports.Show();
+
         }
     }
 }

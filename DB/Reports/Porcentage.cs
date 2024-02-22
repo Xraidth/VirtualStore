@@ -11,30 +11,44 @@ namespace DB.Reports
 {
     public class Porcentage
     {
-        public static List<ProductPorce> CalculatePorceStock()
+        public static List<StockPorce> CalculatePorceStock()
         {
             var products = DataProduct.GetAll();
 
             
-            List<ProductPorce> stock_porces = new List<ProductPorce>();
+            List<StockPorce> stock_porces = new List<StockPorce>();
 
             int total_stock = products.Sum(p => p.ProductStock);
 
-            foreach (var (p, indice) in products.Select((value, index) => (value, index)))
+            foreach (var p in products)
             {
                 
                 var porce = ((p.ProductStock) * 100 / total_stock);
                 var porce_stock = Math.Truncate(Convert.ToDecimal(porce) * 1000) / 1000;
-                var sp = new ProductPorce(indice, p.ProductName, $"{porce_stock}%");
+                var sp = new StockPorce(p.ProductName, $"{porce_stock}%");
                 stock_porces.Add(sp);    
             }
+
+            
+            stock_porces = stock_porces.OrderByDescending(sp => Decimal.Parse(sp.Porcentage.Replace("%", ""))).ToList();
+
+
+
+            int productId = 1;
+            foreach (var item in stock_porces)
+            {
+                item.ProductPorceId = productId;
+                productId++;
+            }
+
+
 
             return stock_porces;
         }
 
-        public static List<ProductPorce> CalculatePorceProductSales(string typePeriod)
+        public static List<ProductSalePorce> CalculatePorceProductSales()
         {
-            List<ProductPorce> sales_porces = new List<ProductPorce>();
+            List<ProductSalePorce> sales_porces = new List<ProductSalePorce>();
 
             var products = DataProduct.GetAll();
             var sales_lines = DataSalesLines.GetAll();
@@ -50,12 +64,23 @@ namespace DB.Reports
                                   .Sum(sl => sl.Amount) * 100 / total_amount;
 
                     var porce_stock = Math.Truncate(Convert.ToDecimal(porce) * 1000) / 1000;
-                    var sp = new ProductPorce(indice, p.ProductName, $"{porce_stock}%");
+                    var sp = new ProductSalePorce(p.ProductName, $"{porce_stock}%");
                     sales_porces.Add(sp);
                 }
             }
-            
-                
+
+
+
+            sales_porces = sales_porces.OrderByDescending(sp => Decimal.Parse(sp.Porcentage.Replace("%", ""))).ToList();
+
+
+
+            int productId = 1;
+            foreach (var item in sales_porces)
+            {
+                item.ProductPorceId = productId;
+                productId++;
+            }
 
             return sales_porces;
         }

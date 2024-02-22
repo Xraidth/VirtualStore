@@ -66,6 +66,12 @@
             label10 = new Label();
             label11 = new Label();
             lblUserLogued = new Label();
+            pbxReports = new PictureBox();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            pictureBox10 = new PictureBox();
+            label12 = new Label();
+            tlpReports = new TableLayoutPanel();
+            lblReports = new Label();
             menuStrip1.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -85,6 +91,10 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             tlpDepo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbxReports).BeginInit();
+            tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
+            tlpReports.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -493,7 +503,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(464, 27);
+            label11.Location = new Point(459, 49);
             label11.Name = "label11";
             label11.Size = new Size(33, 15);
             label11.TabIndex = 5;
@@ -503,18 +513,102 @@
             // lblUserLogued
             // 
             lblUserLogued.AutoSize = true;
-            lblUserLogued.Location = new Point(497, 27);
+            lblUserLogued.Location = new Point(492, 50);
             lblUserLogued.Name = "lblUserLogued";
             lblUserLogued.Size = new Size(20, 15);
             lblUserLogued.TabIndex = 6;
             lblUserLogued.Text = "lbl";
             lblUserLogued.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // pbxReports
+            // 
+            pbxReports.Dock = DockStyle.Fill;
+            pbxReports.Enabled = false;
+            pbxReports.Image = (Image)resources.GetObject("pbxReports.Image");
+            pbxReports.Location = new Point(3, 3);
+            pbxReports.Name = "pbxReports";
+            pbxReports.Size = new Size(26, 23);
+            pbxReports.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbxReports.TabIndex = 7;
+            pbxReports.TabStop = false;
+            pbxReports.Click += pbxReports_Click;
+            // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 1;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel5.Controls.Add(pictureBox10, 0, 0);
+            tableLayoutPanel5.Cursor = Cursors.Hand;
+            tableLayoutPanel5.Location = new Point(0, 0);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 2;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel5.Size = new Size(200, 100);
+            tableLayoutPanel5.TabIndex = 0;
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.Dock = DockStyle.Fill;
+            pictureBox10.Enabled = false;
+            pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
+            pictureBox10.Location = new Point(3, 3);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(194, 14);
+            pictureBox10.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox10.TabIndex = 0;
+            pictureBox10.TabStop = false;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Dock = DockStyle.Fill;
+            label12.Location = new Point(3, 131);
+            label12.Name = "label12";
+            label12.Size = new Size(194, 15);
+            label12.TabIndex = 1;
+            label12.Text = "Sales";
+            label12.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // tlpReports
+            // 
+            tlpReports.ColumnCount = 2;
+            tlpReports.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.034483F));
+            tlpReports.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 68.9655151F));
+            tlpReports.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tlpReports.Controls.Add(lblReports, 0, 0);
+            tlpReports.Controls.Add(pbxReports, 0, 0);
+            tlpReports.Cursor = Cursors.Hand;
+            tlpReports.Location = new Point(63, 49);
+            tlpReports.Name = "tlpReports";
+            tlpReports.RowCount = 1;
+            tlpReports.RowStyles.Add(new RowStyle(SizeType.Percent, 79.0419159F));
+            tlpReports.RowStyles.Add(new RowStyle(SizeType.Percent, 20.9580841F));
+            tlpReports.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tlpReports.Size = new Size(106, 29);
+            tlpReports.TabIndex = 8;
+            tlpReports.Click += tlpReports_Click;
+            // 
+            // lblReports
+            // 
+            lblReports.AutoSize = true;
+            lblReports.Dock = DockStyle.Fill;
+            lblReports.Location = new Point(35, 0);
+            lblReports.Name = "lblReports";
+            lblReports.Size = new Size(68, 29);
+            lblReports.TabIndex = 8;
+            lblReports.Text = "Reports";
+            lblReports.TextAlign = ContentAlignment.MiddleCenter;
+            lblReports.Click += lblReports_Click;
+            // 
             // formMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(572, 335);
+            Controls.Add(tlpReports);
             Controls.Add(lblUserLogued);
             Controls.Add(label11);
             Controls.Add(tlpDepo);
@@ -551,6 +645,11 @@
             tlpDepo.ResumeLayout(false);
             tlpDepo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbxReports).EndInit();
+            tableLayoutPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
+            tlpReports.ResumeLayout(false);
+            tlpReports.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -594,5 +693,11 @@
         public TableLayoutPanel tlpAdm;
         private Label label11;
         private Label lblUserLogued;
+        private PictureBox pbxReports;
+        private TableLayoutPanel tableLayoutPanel5;
+        private PictureBox pictureBox10;
+        private Label label12;
+        private TableLayoutPanel tlpReports;
+        private Label lblReports;
     }
 }

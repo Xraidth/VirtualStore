@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace DataHandle.Reports
 {
-    public class ProductPorce
+    public class StockPorce
     {
         public int ProductPorceId { get; set; }
         public string ProductName { get; set; }
         public string Porcentage { get; set; }
 
-       public ProductPorce( int id, string name, string porce)
+       public StockPorce(string name, string porce)
         {
-            ProductPorceId = id;
+
             ProductName = name;
             Porcentage = porce;
         }
+
     }
 
 }

@@ -14,8 +14,7 @@ namespace DataHandle.Reports
         public decimal Total { get; set; }
 
 
-        public TotalSale(int saleId, DateTime saleDate, decimal total) {
-                SaleId = saleId;
+        public TotalSale(DateTime saleDate, decimal total) {
                 SaleDate = saleDate;
                 Total = total;
         }

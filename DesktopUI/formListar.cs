@@ -17,6 +17,8 @@ using DesktopUI.FormsUser;
 using DesktopUI.FormsSalesLine;
 using DesktopUI.FormsSale;
 using System.Xml.Linq;
+using DataHandle.Reports;
+using DB.Reports;
 
 namespace Escritorio.Generalizado
 {
@@ -81,6 +83,18 @@ namespace Escritorio.Generalizado
             {
                 nom_clase = "Users";
             }
+            else if (tipoDato == typeof(StockPorce))
+            {
+                nom_clase = "ProductPorce";
+            }
+            else if (tipoDato == typeof(ProductSalePorce))
+            {
+                nom_clase = "ProductSalePorce";
+            }
+            else if (tipoDato == typeof(TotalSale))
+            {
+                nom_clase = "TotalSale";
+            }
 
             this.Text = $"List-{nom_clase}";
             lblClase.Text = nom_clase;
@@ -114,6 +128,18 @@ namespace Escritorio.Generalizado
             else if (tipoDato == typeof(User))
             {
                 ListaGeneral.Add(DataUser.GetAll());
+            }
+            else if (tipoDato == typeof(StockPorce))
+            {
+                ListaGeneral.Add(Porcentage.CalculatePorceStock());
+            }
+            else if (tipoDato == typeof(ProductSalePorce))
+            {
+                ListaGeneral.Add(Porcentage.CalculatePorceProductSales());
+            }
+            else if (tipoDato == typeof(TotalSale))
+            {
+                ListaGeneral.Add(Totals.CalculateTotalSale());
             }
         }
 
@@ -156,6 +182,22 @@ namespace Escritorio.Generalizado
             {
                 List<User> users = DataUser.GetAll();
                 ListaGeneral.Add(users.Where(x => x.UserId.ToString().Contains(consulta) || x.UserName.Contains(consulta)).ToList());
+            }
+            else if (tipoDato == typeof(StockPorce))
+            {
+                List <StockPorce> sps = Porcentage.CalculatePorceStock();
+                ListaGeneral.Add(sps.Where(x=>x.ProductPorceId.ToString().Contains(consulta)||x.ProductName.Contains(consulta)).ToList());
+            }
+            else if (tipoDato == typeof(ProductSalePorce))
+            {   
+                List<ProductSalePorce> sps = Porcentage.CalculatePorceProductSales();
+                ListaGeneral.Add(sps.Where(x => x.ProductPorceId.ToString().Contains(consulta) || x.ProductName.Contains(consulta)).ToList());
+            }
+            else if (tipoDato == typeof(TotalSale))
+            {
+                
+                List<TotalSale> sps = Totals.CalculateTotalSale();
+                ListaGeneral.Add(sps.Where(x => x.SaleId.ToString().Contains(consulta) || x.SaleDate.ToString().Contains(consulta)).ToList());
             }
             else { }
             ActualizarGrilla();
