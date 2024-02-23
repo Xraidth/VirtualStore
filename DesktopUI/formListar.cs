@@ -19,6 +19,7 @@ using DesktopUI.FormsSale;
 using System.Xml.Linq;
 using DataHandle.Reports;
 using DB.Reports;
+using DesktopUI.Reports;
 
 namespace Escritorio.Generalizado
 {
@@ -131,14 +132,23 @@ namespace Escritorio.Generalizado
             }
             else if (tipoDato == typeof(StockPorce))
             {
+                btnAgregar.Visible = false;
+                btnEliminar.Visible = false;
+                btnModificar.Visible = false;
                 ListaGeneral.Add(Porcentage.CalculatePorceStock());
             }
             else if (tipoDato == typeof(ProductSalePorce))
             {
+                btnAgregar.Visible = false;
+                btnEliminar.Visible = false;
+                btnModificar.Visible = false;
                 ListaGeneral.Add(Porcentage.CalculatePorceProductSales());
             }
             else if (tipoDato == typeof(TotalSale))
             {
+                btnAgregar.Visible = false;
+                btnEliminar.Visible = false;
+                btnModificar.Visible = false;
                 ListaGeneral.Add(Totals.CalculateTotalSale());
             }
         }
@@ -355,6 +365,21 @@ namespace Escritorio.Generalizado
                 formSaleConsult FormSaleConsult = new formSaleConsult(sale_to_sw);
                 FormSaleConsult.Show();
 
+            }
+            else if (tipoDato == typeof(StockPorce))
+            {
+                formCharts formCharts = new formCharts(typeof(StockPorce));
+                formCharts.Show();
+            }
+            else if (tipoDato == typeof(ProductSalePorce))
+            {
+                formCharts formCharts = new formCharts(typeof(ProductSalePorce));
+                formCharts.Show();
+            }
+            else if (tipoDato == typeof(TotalSale))
+            {
+                formCharts formCharts = new formCharts(typeof(TotalSale));
+                formCharts.Show();
             }
         }
 

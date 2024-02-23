@@ -103,6 +103,10 @@ namespace DesktopUI
                 case Keys.NumPad3:
                     productsToolStripMenuItem.PerformClick();
                     break;
+                case Keys.D4:
+                case Keys.NumPad4:
+                    lblReports_Click(sender, e);
+                    break;
                 case Keys.Escape:
                     this.Close();
                     break;

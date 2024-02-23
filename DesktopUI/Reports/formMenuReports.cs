@@ -17,6 +17,7 @@ namespace DesktopUI.Reports
         public formMenuReports()
         {
             InitializeComponent();
+            this.KeyPreview = true;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -40,6 +41,33 @@ namespace DesktopUI.Reports
         {
             formListar formListar = new formListar(typeof(ProductSalePorce));
             formListar.Show();
+        }
+
+        private void formMenuReports_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.D0:
+                case Keys.NumPad0:
+                    this.Close();
+                    break;
+                case Keys.D1:
+                case Keys.NumPad1:
+                    btnSalePerDay.PerformClick();
+                    break;
+                case Keys.D2:
+                case Keys.NumPad2:
+                    btnSalesProductPorce.PerformClick();
+                    break;
+                case Keys.D3:
+                case Keys.NumPad3:
+                    btnStockPorce.PerformClick();
+                    break;
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
+            }
         }
     }
 }

@@ -31,6 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Syncfusion.Chart.Windows" Version="24.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DB\DB.csproj" />
     <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>

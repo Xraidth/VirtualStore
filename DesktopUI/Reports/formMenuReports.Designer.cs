@@ -86,6 +86,7 @@
             Name = "formMenuReports";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "formMenuReports";
+            KeyDown += formMenuReports_KeyDown;
             ResumeLayout(false);
         }
 
