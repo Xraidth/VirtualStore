@@ -35,7 +35,7 @@ namespace DB.Reports
                 sale_totals.Add(ts);
             }
 
-            sale_totals = sale_totals.OrderByDescending(sp => sp.SaleDate).ToList();
+            
 
 
 

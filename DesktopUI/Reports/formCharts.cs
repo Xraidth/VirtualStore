@@ -30,7 +30,11 @@ namespace DesktopUI.Reports
             if (tipoDato == typeof(StockPorce))
             {
                 chcChartControl.Text = "StockPorce";
-                chcChartControl.Series.Add(new ChartSeries() { Type = ChartSeriesType.Pie });
+                chcChartControl.Series.Add(new ChartSeries() { Type = ChartSeriesType.Column });
+                chcChartControl.PrimaryXAxis.ValueType = ChartValueType.Category;
+                chcChartControl.PrimaryYAxis.ValueType = ChartValueType.Double;
+                chcChartControl.PrimaryXAxis.Title = "Products";
+                chcChartControl.PrimaryYAxis.Title = "Stock Percentage";
 
                 foreach (var item in Porcentage.CalculatePorceStock())
                 {
@@ -58,6 +62,7 @@ namespace DesktopUI.Reports
                 ChartSeries barSeries = new ChartSeries();
 
                 barSeries.Type = ChartSeriesType.Column;
+                
 
                 chcChartControl.PrimaryXAxis.ValueType = ChartValueType.DateTime;
                 chcChartControl.PrimaryYAxis.ValueType = ChartValueType.Double;
@@ -80,6 +85,7 @@ namespace DesktopUI.Reports
 
                 }
 
+                
 
                 chcChartControl.Series.Add(barSeries);
 
