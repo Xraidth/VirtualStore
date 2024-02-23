@@ -47,6 +47,7 @@ namespace DesktopUI.Reports
                 chcChartControl.Text = "ProductSalePorce";
                 chcChartControl.Series.Add(new ChartSeries() { Type = ChartSeriesType.Pie });
 
+
                 foreach (var item in Porcentage.CalculatePorceProductSales())
                 {
                     chcChartControl.Series[0].Points.Add(item.ProductName, Convert.ToDouble(item.Porcentage.Replace("%", "")));
@@ -108,6 +109,20 @@ namespace DesktopUI.Reports
                 foreach (var item in Totals.CalculateTotalMonth())
                 {
                     chcChartControl.Series[0].Points.Add($"{item.MonthName}  {item.Year}", Convert.ToDouble(item.Total));
+                }
+            }
+            else if (tipoDato == typeof(TotalYear))
+            {
+                chcChartControl.Text = "TotalYear";
+                chcChartControl.Series.Add(new ChartSeries() { Type = ChartSeriesType.Column });
+                chcChartControl.PrimaryXAxis.ValueType = ChartValueType.Category;
+                chcChartControl.PrimaryYAxis.ValueType = ChartValueType.Double;
+                chcChartControl.PrimaryXAxis.Title = "Year";
+                chcChartControl.PrimaryYAxis.Title = "Sale";
+
+                foreach (var item in Totals.CalculateTotalYear())
+                {
+                    chcChartControl.Series[0].Points.Add($"{item.Year}", Convert.ToDouble(item.Total));
                 }
             }
 

@@ -163,6 +163,13 @@ namespace Escritorio.Generalizado
                 btnModificar.Visible = false;
                 ListaGeneral.Add(Totals.CalculateTotalMonth());
             }
+            else if (tipoDato == typeof(TotalYear))
+            {
+                btnAgregar.Visible = false;
+                btnEliminar.Visible = false;
+                btnModificar.Visible = false;
+                ListaGeneral.Add(Totals.CalculateTotalYear());
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -225,6 +232,11 @@ namespace Escritorio.Generalizado
             {
                 List<TotalMonth> sps = Totals.CalculateTotalMonth();
                 ListaGeneral.Add(sps.Where(x => x.TotalMonthId.ToString().Contains(consulta) || x.Month.ToString().Contains(consulta)||x.MonthName.Contains(consulta)).ToList());
+            }
+            else if (tipoDato == typeof(TotalYear))
+            {
+                List<TotalYear> sps = Totals.CalculateTotalYear();
+                ListaGeneral.Add(sps.Where(x => x.TotalYearId.ToString().Contains(consulta) || x.Year.ToString().Contains(consulta)).ToList());
             }
             else { }
             ActualizarGrilla();
@@ -401,6 +413,11 @@ namespace Escritorio.Generalizado
             else if (tipoDato == typeof(TotalMonth))
             {
                 formCharts formCharts = new formCharts(typeof(TotalMonth));
+                formCharts.Show();
+            }
+            else if (tipoDato == typeof(TotalYear))
+            {
+                formCharts formCharts = new formCharts(typeof(TotalYear));
                 formCharts.Show();
             }
         }

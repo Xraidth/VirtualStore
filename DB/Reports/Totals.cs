@@ -78,5 +78,25 @@ namespace DB.Reports
             return sale_totals;
 
         }
+        public static List<TotalYear> CalculateTotalYear()
+        {
+            List<TotalYear> sale_totals = new List<TotalYear>();
+            var salePerMonth = CalculateTotalMonth();
+
+            var years = salePerMonth.Select(x => x.Year).Distinct().ToList();
+
+            int id = 1;
+            foreach (var y in years)
+            {
+                var sy = new TotalYear(y);
+                sy.TotalYearId = id;
+                sy.Total = salePerMonth.Where(x => x.Year == y).ToList().Sum(yy => yy.Total);
+                sale_totals.Add(sy);
+                id++;
+            }
+
+            return sale_totals;
+        }
+
     }
 }

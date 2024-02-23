@@ -33,6 +33,7 @@
             btnSalesProductPorce = new Button();
             button3 = new Button();
             btnSalesPerMonth = new Button();
+            btnSalesPerYear = new Button();
             SuspendLayout();
             // 
             // btnSalePerDay
@@ -85,11 +86,22 @@
             btnSalesPerMonth.UseVisualStyleBackColor = true;
             btnSalesPerMonth.Click += btnSalesPerMonth_Click;
             // 
+            // btnSalesPerYear
+            // 
+            btnSalesPerYear.Location = new Point(285, 181);
+            btnSalesPerYear.Name = "btnSalesPerYear";
+            btnSalesPerYear.Size = new Size(240, 40);
+            btnSalesPerYear.TabIndex = 11;
+            btnSalesPerYear.Text = "Sales per Year";
+            btnSalesPerYear.UseVisualStyleBackColor = true;
+            btnSalesPerYear.Click += btnSalesPerYear_Click;
+            // 
             // formMenuReports
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(537, 431);
+            Controls.Add(btnSalesPerYear);
             Controls.Add(btnSalesPerMonth);
             Controls.Add(button3);
             Controls.Add(btnSalesProductPorce);
@@ -109,5 +121,6 @@
         private Button btnSalesProductPorce;
         private Button button3;
         private Button btnSalesPerMonth;
+        private Button btnSalesPerYear;
     }
 }

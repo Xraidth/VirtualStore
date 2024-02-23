@@ -49,6 +49,11 @@ namespace DesktopUI.Reports
             formListar.Show();
         }
 
+        private void btnSalesPerYear_Click(object sender, EventArgs e)
+        {
+            formListar formListar = new formListar(typeof(TotalYear));
+            formListar.Show();
+        }
         private void formMenuReports_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -73,6 +78,10 @@ namespace DesktopUI.Reports
                 case Keys.NumPad4:
                     btnSalesPerMonth.PerformClick();
                     break;
+                case Keys.D6:
+                case Keys.NumPad6:
+                    btnSalesPerYear.PerformClick();
+                    break;
                 case Keys.Escape:
                     this.Close();
                     break;
@@ -80,6 +89,6 @@ namespace DesktopUI.Reports
             }
         }
 
-      
+       
     }
 }
