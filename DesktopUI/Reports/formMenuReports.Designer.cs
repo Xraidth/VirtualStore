@@ -32,11 +32,12 @@
             btnStockPorce = new Button();
             btnSalesProductPorce = new Button();
             button3 = new Button();
+            btnSalesPerMonth = new Button();
             SuspendLayout();
             // 
             // btnSalePerDay
             // 
-            btnSalePerDay.Location = new Point(151, 78);
+            btnSalePerDay.Location = new Point(285, 44);
             btnSalePerDay.Name = "btnSalePerDay";
             btnSalePerDay.Size = new Size(240, 40);
             btnSalePerDay.TabIndex = 6;
@@ -46,7 +47,7 @@
             // 
             // btnStockPorce
             // 
-            btnStockPorce.Location = new Point(151, 218);
+            btnStockPorce.Location = new Point(12, 44);
             btnStockPorce.Name = "btnStockPorce";
             btnStockPorce.Size = new Size(240, 40);
             btnStockPorce.TabIndex = 7;
@@ -56,7 +57,7 @@
             // 
             // btnSalesProductPorce
             // 
-            btnSalesProductPorce.Location = new Point(151, 149);
+            btnSalesProductPorce.Location = new Point(12, 115);
             btnSalesProductPorce.Name = "btnSalesProductPorce";
             btnSalesProductPorce.Size = new Size(240, 40);
             btnSalesProductPorce.TabIndex = 8;
@@ -74,11 +75,22 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
+            // btnSalesPerMonth
+            // 
+            btnSalesPerMonth.Location = new Point(285, 115);
+            btnSalesPerMonth.Name = "btnSalesPerMonth";
+            btnSalesPerMonth.Size = new Size(240, 40);
+            btnSalesPerMonth.TabIndex = 10;
+            btnSalesPerMonth.Text = "Sales per Month";
+            btnSalesPerMonth.UseVisualStyleBackColor = true;
+            btnSalesPerMonth.Click += btnSalesPerMonth_Click;
+            // 
             // formMenuReports
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(537, 431);
+            Controls.Add(btnSalesPerMonth);
             Controls.Add(button3);
             Controls.Add(btnSalesProductPorce);
             Controls.Add(btnStockPorce);
@@ -96,5 +108,6 @@
         private Button btnStockPorce;
         private Button btnSalesProductPorce;
         private Button button3;
+        private Button btnSalesPerMonth;
     }
 }

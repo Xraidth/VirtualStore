@@ -96,6 +96,11 @@ namespace Escritorio.Generalizado
             {
                 nom_clase = "TotalSale";
             }
+            else if (tipoDato == typeof(TotalMonth))
+            {
+                nom_clase = "TotalMonth";
+            }
+
 
             this.Text = $"List-{nom_clase}";
             lblClase.Text = nom_clase;
@@ -150,6 +155,13 @@ namespace Escritorio.Generalizado
                 btnEliminar.Visible = false;
                 btnModificar.Visible = false;
                 ListaGeneral.Add(Totals.CalculateTotalSale());
+            }
+            else if (tipoDato == typeof(TotalMonth))
+            {
+                btnAgregar.Visible = false;
+                btnEliminar.Visible = false;
+                btnModificar.Visible = false;
+                ListaGeneral.Add(Totals.CalculateTotalMonth());
             }
         }
 
@@ -208,6 +220,11 @@ namespace Escritorio.Generalizado
                 
                 List<TotalSale> sps = Totals.CalculateTotalSale();
                 ListaGeneral.Add(sps.Where(x => x.SaleId.ToString().Contains(consulta) || x.SaleDate.ToString().Contains(consulta)).ToList());
+            }
+            else if (tipoDato == typeof(TotalMonth))
+            {
+                List<TotalMonth> sps = Totals.CalculateTotalMonth();
+                ListaGeneral.Add(sps.Where(x => x.TotalMonthId.ToString().Contains(consulta) || x.Month.ToString().Contains(consulta)||x.MonthName.Contains(consulta)).ToList());
             }
             else { }
             ActualizarGrilla();
@@ -379,6 +396,11 @@ namespace Escritorio.Generalizado
             else if (tipoDato == typeof(TotalSale))
             {
                 formCharts formCharts = new formCharts(typeof(TotalSale));
+                formCharts.Show();
+            }
+            else if (tipoDato == typeof(TotalMonth))
+            {
+                formCharts formCharts = new formCharts(typeof(TotalMonth));
                 formCharts.Show();
             }
         }

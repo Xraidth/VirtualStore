@@ -64,7 +64,7 @@ namespace DesktopUI.Reports
                 barSeries.Type = ChartSeriesType.Column;
                 
 
-                chcChartControl.PrimaryXAxis.ValueType = ChartValueType.DateTime;
+                chcChartControl.PrimaryXAxis.ValueType = ChartValueType.Category;
                 chcChartControl.PrimaryYAxis.ValueType = ChartValueType.Double;
 
 
@@ -81,7 +81,7 @@ namespace DesktopUI.Reports
 
 
 
-                    barSeries.Points.Add(sale.SaleDate.Date, total);
+                    barSeries.Points.Add(sale.SaleDate.ToString("dd/MM/yyyy"), total);
 
                 }
 
@@ -95,13 +95,20 @@ namespace DesktopUI.Reports
 
                 chcChartControl.PrimaryXAxis.DateTimeFormat = "dd/MM/yyyy";
 
+            }
+            else if (tipoDato == typeof(TotalMonth))
+            {
+                chcChartControl.Text = "TotalMonth";
+                chcChartControl.Series.Add(new ChartSeries() { Type = ChartSeriesType.Column });
+                chcChartControl.PrimaryXAxis.ValueType = ChartValueType.Category;
+                chcChartControl.PrimaryYAxis.ValueType = ChartValueType.Double;
+                chcChartControl.PrimaryXAxis.Title = "Month";
+                chcChartControl.PrimaryYAxis.Title = "Sale";
 
-
-
-
-
-
-
+                foreach (var item in Totals.CalculateTotalMonth())
+                {
+                    chcChartControl.Series[0].Points.Add($"{item.MonthName}  {item.Year}", Convert.ToDouble(item.Total));
+                }
             }
 
 

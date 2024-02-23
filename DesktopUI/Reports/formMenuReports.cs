@@ -43,6 +43,12 @@ namespace DesktopUI.Reports
             formListar.Show();
         }
 
+        private void btnSalesPerMonth_Click(object sender, EventArgs e)
+        {
+            formListar formListar = new formListar(typeof(TotalMonth));
+            formListar.Show();
+        }
+
         private void formMenuReports_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -53,15 +59,19 @@ namespace DesktopUI.Reports
                     break;
                 case Keys.D1:
                 case Keys.NumPad1:
-                    btnSalePerDay.PerformClick();
+                    btnStockPorce.PerformClick();
                     break;
                 case Keys.D2:
                 case Keys.NumPad2:
-                    btnSalesProductPorce.PerformClick();
+                    btnSalePerDay.PerformClick();
                     break;
                 case Keys.D3:
                 case Keys.NumPad3:
-                    btnStockPorce.PerformClick();
+                    btnSalesProductPorce.PerformClick();
+                    break;
+                case Keys.D4:
+                case Keys.NumPad4:
+                    btnSalesPerMonth.PerformClick();
                     break;
                 case Keys.Escape:
                     this.Close();
@@ -69,5 +79,7 @@ namespace DesktopUI.Reports
 
             }
         }
+
+      
     }
 }
