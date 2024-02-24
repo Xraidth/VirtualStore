@@ -1,6 +1,6 @@
 ﻿namespace DesktopUI.Reports
 {
-    partial class formOxyPlot
+    partial class formOxyplotLines
     {
         /// <summary>
         /// Required designer variable.
@@ -38,23 +38,23 @@
             plotView1.Name = "plotView1";
             plotView1.PanCursor = Cursors.Hand;
             plotView1.Size = new Size(800, 450);
-            plotView1.TabIndex = 0;
+            plotView1.TabIndex = 1;
             plotView1.Text = "plotView1";
             plotView1.ZoomHorizontalCursor = Cursors.SizeWE;
             plotView1.ZoomRectangleCursor = Cursors.SizeNWSE;
             plotView1.ZoomVerticalCursor = Cursors.SizeNS;
             // 
-            // formOxyPlot
+            // formOxyplotLines
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(plotView1);
-            Name = "formOxyPlot";
+            Name = "formOxyplotLines";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "formOxyPlot";
-            Load += formOxyPlot_Load;
-            KeyDown += formOxyPlot_KeyDown;
+            Text = "formOxyplotLines";
+            Load += formOxyplotLines_Load;
+            KeyDown += formOxyplotLines_KeyDown;
             ResumeLayout(false);
         }
 

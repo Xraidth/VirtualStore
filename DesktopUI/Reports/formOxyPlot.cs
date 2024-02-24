@@ -25,43 +25,47 @@ namespace DesktopUI.Reports
         public formOxyPlot(Type tipo_dato)
         {
             InitializeComponent();
+            this.KeyPreview = true;
             tipoDato = tipo_dato;
         }
 
         private void formOxyPlot_Load(object sender, EventArgs e)
         {
 
-            if(tipoDato == typeof(StockPorce)) { 
-            var model = new PlotModel { Title = "StockPorce" };
-
-            var stock_today = Porcentage.CalculatePorceStock();
-
-            var baritemlist = new List<BarItem>();
-
-
-            foreach (var st in stock_today)
+            if (tipoDato == typeof(StockPorce))
             {
-                var bi = new BarItem { Value = (Double.Parse(st.Porcentage.Replace("%", ""))) };
-                baritemlist.Add(bi);
-            }
-            var barSeries = new BarSeries
-            {
-                ItemsSource = baritemlist,
-                LabelPlacement = LabelPlacement.Inside,
-                LabelFormatString = "{0:.00}%"
-            };
-            model.Series.Add(barSeries);
-            List<String> barNamelist = stock_today.Select(x => x.ProductName).ToList();
+                var model = new PlotModel { Title = "StockPorce" };
+
+                var stock_today = Porcentage.CalculatePorceStock();
+
+                var baritemlist = new List<BarItem>();
+
+
+                foreach (var st in stock_today)
+                {
+                    var bi = new BarItem { Value = (Double.Parse(st.Porcentage.Replace("%", ""))) };
+                    baritemlist.Add(bi);
+                }
+                var barSeries = new BarSeries
+                {
+                    ItemsSource = baritemlist,
+                    LabelPlacement = LabelPlacement.Inside,
+                    LabelFormatString = "{0:.00}%",
+                    FillColor = OxyColor.FromRgb(0, 120, 215)
+                };
+                model.Series.Add(barSeries);
+                List<String> barNamelist = stock_today.Select(x => x.ProductName).ToList();
                 model.Axes.Add(new CategoryAxis
-            {
-                Position = AxisPosition.Left,
-                Key = "Product",
-                ItemsSource = barNamelist});
-            plotView1.Model = model;
+                {
+                    Position = AxisPosition.Left,
+                    Key = "Product",
+                    ItemsSource = barNamelist
+                });
+                plotView1.Model = model;
             }
             else if (tipoDato == typeof(ProductSalePorce))
             {
-                var productSalePorces = Porcentage.CalculatePorceProductSales(); 
+                var productSalePorces = Porcentage.CalculatePorceProductSales();
 
                 var model = new PlotModel { Title = "ProductSalePorce" };
 
@@ -70,7 +74,7 @@ namespace DesktopUI.Reports
 
                 foreach (var psp in productSalePorces)
                 {
-                    series.Slices.Add(new PieSlice(psp.ProductName, Double.Parse(psp.Porcentage.Replace("%", ""))){ IsExploded = true });
+                    series.Slices.Add(new PieSlice(psp.ProductName, Double.Parse(psp.Porcentage.Replace("%", ""))) { IsExploded = true });
                 }
 
                 model.Series.Add(series);
@@ -95,7 +99,8 @@ namespace DesktopUI.Reports
                 {
                     ItemsSource = baritemlist,
                     LabelPlacement = LabelPlacement.Inside,
-                    LabelFormatString = "{0:,.00}"
+                    LabelFormatString = "{0:,.00}",
+                    FillColor = OxyColor.FromRgb(0, 120, 215)
                 };
                 model.Series.Add(barSeries);
                 List<String> barNamelist = sale_totals.Select(x => x.SaleDate.ToString("dd/MM/yyyy")).ToList();
@@ -125,7 +130,8 @@ namespace DesktopUI.Reports
                 {
                     ItemsSource = baritemlist,
                     LabelPlacement = LabelPlacement.Inside,
-                    LabelFormatString = "{0:,.00}"
+                    LabelFormatString = "{0:,.00}",
+                    FillColor = OxyColor.FromRgb(0, 120, 215)
                 };
                 model.Series.Add(barSeries);
                 List<String> barNamelist = sale_totals.Select(x => $"{x.MonthName} {x.Year}").ToList();
@@ -155,7 +161,8 @@ namespace DesktopUI.Reports
                 {
                     ItemsSource = baritemlist,
                     LabelPlacement = LabelPlacement.Inside,
-                    LabelFormatString = "{0:,.00}"
+                    LabelFormatString = "{0:,.00}",
+                    FillColor = OxyColor.FromRgb(0, 120, 215)
                 };
                 model.Series.Add(barSeries);
                 List<String> barNamelist = sale_totals.Select(x => $"{x.Year}").ToList();
@@ -166,6 +173,21 @@ namespace DesktopUI.Reports
                     ItemsSource = barNamelist
                 });
                 plotView1.Model = model;
+            }
+        }
+
+        private void formOxyPlot_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.D0:
+                case Keys.NumPad0:
+                    this.Close();
+                    break;
+                case Keys.Escape:
+                    this.Close();
+                    break;
+
             }
         }
     }

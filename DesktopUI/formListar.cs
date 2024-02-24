@@ -158,25 +158,25 @@ namespace Escritorio.Generalizado
             else if (tipoDato == typeof(TotalSale))
             {
                 btnAgregar.Text = "Grafic (1)";
-                btnConsultar.Text = "Grafic (2)";
+                btnModificar.Text = "Grafic (2)";
+                btnConsultar.Text = "Grafic (3)";
                 btnEliminar.Visible = false;
-                btnModificar.Visible = false;
                 ListaGeneral.Add(Totals.CalculateTotalSale());
             }
             else if (tipoDato == typeof(TotalMonth))
             {
                 btnAgregar.Text = "Grafic (1)";
-                btnConsultar.Text = "Grafic (2)";
+                btnModificar.Text = "Grafic (2)";
+                btnConsultar.Text = "Grafic (3)";
                 btnEliminar.Visible = false;
-                btnModificar.Visible = false;
                 ListaGeneral.Add(Totals.CalculateTotalMonth());
             }
             else if (tipoDato == typeof(TotalYear))
             {
                 btnAgregar.Text = "Grafic (1)";
-                btnConsultar.Text = "Grafic (2)";
+                btnModificar.Text = "Grafic (2)";
+                btnConsultar.Text = "Grafic (3)";
                 btnEliminar.Visible = false;
-                btnModificar.Visible = false;
                 ListaGeneral.Add(Totals.CalculateTotalYear());
             }
         }
@@ -393,6 +393,24 @@ namespace Escritorio.Generalizado
                 formSaleLineAddFaster formSaleLineAddFaster = new formSaleLineAddFaster(saleAdder, sale_to_update);
                 formSaleLineAddFaster.Show();
                 formSaleLineAddFaster.ListarClicked += (s, args) => btnListar_Click(sender, e);
+            }
+            else if (tipoDato == typeof(TotalSale))
+            {
+                formOxyplotLines formOxyplotLines = new formOxyplotLines(typeof(TotalSale));
+                formOxyplotLines.Show();
+
+            }
+            else if (tipoDato == typeof(TotalMonth))
+            {
+                formOxyplotLines formOxyplotLines = new formOxyplotLines(typeof(TotalMonth));
+                formOxyplotLines.Show();
+
+            }
+            else if (tipoDato == typeof(TotalYear))
+            {
+                formOxyplotLines formOxyplotLines = new formOxyplotLines(typeof(TotalYear));
+                formOxyplotLines.Show();
+
             }
         }
         private void btnConsultar_Click(object sender, EventArgs e)
