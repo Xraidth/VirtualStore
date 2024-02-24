@@ -86,7 +86,7 @@ namespace Escritorio.Generalizado
             }
             else if (tipoDato == typeof(StockPorce))
             {
-                nom_clase = "ProductPorce";
+                nom_clase = "StockPorce";
             }
             else if (tipoDato == typeof(ProductSalePorce))
             {
@@ -99,6 +99,10 @@ namespace Escritorio.Generalizado
             else if (tipoDato == typeof(TotalMonth))
             {
                 nom_clase = "TotalMonth";
+            }
+            else if (tipoDato == typeof(TotalMonth))
+            {
+                nom_clase = "TotalYear";
             }
 
 
@@ -137,35 +141,40 @@ namespace Escritorio.Generalizado
             }
             else if (tipoDato == typeof(StockPorce))
             {
-                btnAgregar.Text = "Grafic";
+                btnAgregar.Text = "Grafic (1)";
+                btnConsultar.Text = "Grafic (2)";
                 btnEliminar.Visible = false;
                 btnModificar.Visible = false;
                 ListaGeneral.Add(Porcentage.CalculatePorceStock());
             }
             else if (tipoDato == typeof(ProductSalePorce))
             {
-                btnAgregar.Text = "Grafic";
+                btnAgregar.Text = "Grafic (1)";
+                btnConsultar.Text = "Grafic (2)";
                 btnEliminar.Visible = false;
                 btnModificar.Visible = false;
                 ListaGeneral.Add(Porcentage.CalculatePorceProductSales());
             }
             else if (tipoDato == typeof(TotalSale))
             {
-                btnAgregar.Text = "Grafic";
+                btnAgregar.Text = "Grafic (1)";
+                btnConsultar.Text = "Grafic (2)";
                 btnEliminar.Visible = false;
                 btnModificar.Visible = false;
                 ListaGeneral.Add(Totals.CalculateTotalSale());
             }
             else if (tipoDato == typeof(TotalMonth))
             {
-                btnAgregar.Text = "Grafic";
+                btnAgregar.Text = "Grafic (1)";
+                btnConsultar.Text = "Grafic (2)";
                 btnEliminar.Visible = false;
                 btnModificar.Visible = false;
                 ListaGeneral.Add(Totals.CalculateTotalMonth());
             }
             else if (tipoDato == typeof(TotalYear))
             {
-                btnAgregar.Text = "Grafic";
+                btnAgregar.Text = "Grafic (1)";
+                btnConsultar.Text = "Grafic (2)";
                 btnEliminar.Visible = false;
                 btnModificar.Visible = false;
                 ListaGeneral.Add(Totals.CalculateTotalYear());
@@ -285,6 +294,30 @@ namespace Escritorio.Generalizado
             else if (tipoDato == typeof(StockPorce))
             {
                 formOxyPlot formOxyPlot = new formOxyPlot(typeof(StockPorce));
+                formOxyPlot.Show();
+
+            }
+            else if (tipoDato == typeof(ProductSalePorce))
+            {
+                formOxyPlot formOxyPlot = new formOxyPlot(typeof(ProductSalePorce));
+                formOxyPlot.Show();
+
+            }
+            else if (tipoDato == typeof(TotalSale))
+            {
+                formOxyPlot formOxyPlot = new formOxyPlot(typeof(TotalSale));
+                formOxyPlot.Show();
+
+            }
+            else if (tipoDato == typeof(TotalMonth))
+            {
+                formOxyPlot formOxyPlot = new formOxyPlot(typeof(TotalMonth));
+                formOxyPlot.Show();
+
+            }
+            else if (tipoDato == typeof(TotalYear))
+            {
+                formOxyPlot formOxyPlot = new formOxyPlot(typeof(TotalYear));
                 formOxyPlot.Show();
 
             }
