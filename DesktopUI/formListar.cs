@@ -137,35 +137,35 @@ namespace Escritorio.Generalizado
             }
             else if (tipoDato == typeof(StockPorce))
             {
-                btnAgregar.Visible = false;
+                btnAgregar.Text = "Grafic";
                 btnEliminar.Visible = false;
                 btnModificar.Visible = false;
                 ListaGeneral.Add(Porcentage.CalculatePorceStock());
             }
             else if (tipoDato == typeof(ProductSalePorce))
             {
-                btnAgregar.Visible = false;
+                btnAgregar.Text = "Grafic";
                 btnEliminar.Visible = false;
                 btnModificar.Visible = false;
                 ListaGeneral.Add(Porcentage.CalculatePorceProductSales());
             }
             else if (tipoDato == typeof(TotalSale))
             {
-                btnAgregar.Visible = false;
+                btnAgregar.Text = "Grafic";
                 btnEliminar.Visible = false;
                 btnModificar.Visible = false;
                 ListaGeneral.Add(Totals.CalculateTotalSale());
             }
             else if (tipoDato == typeof(TotalMonth))
             {
-                btnAgregar.Visible = false;
+                btnAgregar.Text = "Grafic";
                 btnEliminar.Visible = false;
                 btnModificar.Visible = false;
                 ListaGeneral.Add(Totals.CalculateTotalMonth());
             }
             else if (tipoDato == typeof(TotalYear))
             {
-                btnAgregar.Visible = false;
+                btnAgregar.Text = "Grafic";
                 btnEliminar.Visible = false;
                 btnModificar.Visible = false;
                 ListaGeneral.Add(Totals.CalculateTotalYear());
@@ -282,7 +282,12 @@ namespace Escritorio.Generalizado
                 formSaleLineAddFaster.ListarClicked += (s, args) => btnListar_Click(sender, e);
 
             }
+            else if (tipoDato == typeof(StockPorce))
+            {
+                formOxyPlot formOxyPlot = new formOxyPlot(typeof(StockPorce));
+                formOxyPlot.Show();
 
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
