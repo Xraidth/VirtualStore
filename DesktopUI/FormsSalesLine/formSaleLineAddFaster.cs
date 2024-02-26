@@ -47,11 +47,11 @@ namespace DesktopUI.FormsSalesLine
         public event ListarEventHandler ListarClicked;
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (txtProductID.Text != "") { 
-            int pa_id = Convert.ToInt32(txtProductID.Text);
-            product_adder = DataProduct.GetOne(pa_id);
+            if (txtProductID.Text == ""|| nudAmount.Value <=0)
+            {
+                MessageBox.Show("Complete all the fields correctly");
             }
-            else { MessageBox.Show("Complete all the filds"); }
+            
 
             int amu = Convert.ToInt32(nudAmount.Value);
             if (product_adder != null && amu >= 0)
@@ -90,7 +90,7 @@ namespace DesktopUI.FormsSalesLine
         private void formSaleLineAddFaster_Load(object sender, EventArgs e)
         {
             this.KeyPreview = true;
-            
+
 
         }
 
@@ -119,6 +119,17 @@ namespace DesktopUI.FormsSalesLine
 
                 }
 
+            }
+        }
+
+        private void txtProductID_TextChanged(object sender, EventArgs e)
+        {
+            if (txtProductID.Text != "")
+            {
+                int pa_id = Convert.ToInt32(txtProductID.Text);
+                product_adder = DataProduct.GetOne(pa_id);
+                lblProductName.Text = (product_adder != null) ? product_adder.ProductName : "No found";
+                lblProductName.ForeColor = (product_adder != null) ? Color.Green : Color.Red;
             }
         }
     }
