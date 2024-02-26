@@ -104,7 +104,10 @@ namespace Escritorio.Generalizado
             {
                 nom_clase = "TotalYear";
             }
-
+            else if (tipoDato == typeof(TotalWeek))
+            {
+                nom_clase = "TotalWeek";
+            }
 
             this.Text = $"List-{nom_clase}";
             lblClase.Text = nom_clase;
@@ -179,6 +182,14 @@ namespace Escritorio.Generalizado
                 btnEliminar.Visible = false;
                 ListaGeneral.Add(Totals.CalculateTotalYear());
             }
+            else if (tipoDato == typeof(TotalWeek))
+            {
+                btnAgregar.Text = "Grafic (1)";
+                btnModificar.Text = "Grafic (2)";
+                btnConsultar.Visible = false;
+                btnEliminar.Visible = false;
+                ListaGeneral.Add(Totals.CalculateTotalWeek());
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -246,6 +257,11 @@ namespace Escritorio.Generalizado
             {
                 List<TotalYear> sps = Totals.CalculateTotalYear();
                 ListaGeneral.Add(sps.Where(x => x.TotalYearId.ToString().Contains(consulta) || x.Year.ToString().Contains(consulta)).ToList());
+            }
+            else if (tipoDato == typeof(TotalWeek))
+            {
+                List<TotalWeek> sps = Totals.CalculateTotalWeek();
+                ListaGeneral.Add(sps.Where(x => x.WeekDayId.ToString().Contains(consulta) || x.WeekDay.ToString().Contains(consulta)).ToList());
             }
             else { }
             ActualizarGrilla();
@@ -318,6 +334,12 @@ namespace Escritorio.Generalizado
             else if (tipoDato == typeof(TotalYear))
             {
                 formOxyPlot formOxyPlot = new formOxyPlot(typeof(TotalYear));
+                formOxyPlot.Show();
+
+            }
+            else if (tipoDato == typeof(TotalWeek))
+            {
+                formOxyPlot formOxyPlot = new formOxyPlot(typeof(TotalWeek));
                 formOxyPlot.Show();
 
             }
@@ -409,6 +431,12 @@ namespace Escritorio.Generalizado
             else if (tipoDato == typeof(TotalYear))
             {
                 formOxyplotLines formOxyplotLines = new formOxyplotLines(typeof(TotalYear));
+                formOxyplotLines.Show();
+
+            }
+            else if (tipoDato == typeof(TotalWeek))
+            {
+                formOxyplotLines formOxyplotLines = new formOxyplotLines(typeof(TotalWeek));
                 formOxyplotLines.Show();
 
             }

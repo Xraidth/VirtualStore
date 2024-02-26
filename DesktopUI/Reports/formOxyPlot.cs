@@ -174,6 +174,37 @@ namespace DesktopUI.Reports
                 });
                 plotView1.Model = model;
             }
+            else if (tipoDato == typeof(TotalWeek))
+            {
+                var model = new PlotModel { Title = "TotalWeek" };
+
+                var sale_totals = Totals.CalculateTotalWeek();
+
+                var baritemlist = new List<BarItem>();
+
+                sale_totals.Reverse();
+                foreach (var st in sale_totals)
+                {
+                    var bi = new BarItem { Value = (Convert.ToDouble(st.Total)) };
+                    baritemlist.Add(bi);
+                }
+                var barSeries = new BarSeries
+                {
+                    ItemsSource = baritemlist,
+                    LabelPlacement = LabelPlacement.Inside,
+                    LabelFormatString = "{0}",
+                    FillColor = OxyColor.FromRgb(0, 120, 215)
+                };
+                model.Series.Add(barSeries);
+                List<String> barNamelist = sale_totals.Select(x => x.WeekDay).ToList();
+                model.Axes.Add(new CategoryAxis
+                {
+                    Position = AxisPosition.Left,
+                    Key = "Date",
+                    ItemsSource = barNamelist
+                });
+                plotView1.Model = model;
+            }
         }
 
         private void formOxyPlot_KeyDown(object sender, KeyEventArgs e)

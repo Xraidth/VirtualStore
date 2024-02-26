@@ -34,6 +34,7 @@
             button3 = new Button();
             btnSalesPerMonth = new Button();
             btnSalesPerYear = new Button();
+            btnSalesOfWeek = new Button();
             SuspendLayout();
             // 
             // btnSalePerDay
@@ -88,7 +89,7 @@
             // 
             // btnSalesPerYear
             // 
-            btnSalesPerYear.Location = new Point(285, 181);
+            btnSalesPerYear.Location = new Point(285, 195);
             btnSalesPerYear.Name = "btnSalesPerYear";
             btnSalesPerYear.Size = new Size(240, 40);
             btnSalesPerYear.TabIndex = 11;
@@ -96,11 +97,22 @@
             btnSalesPerYear.UseVisualStyleBackColor = true;
             btnSalesPerYear.Click += btnSalesPerYear_Click;
             // 
+            // btnSalesOfWeek
+            // 
+            btnSalesOfWeek.Location = new Point(12, 195);
+            btnSalesOfWeek.Name = "btnSalesOfWeek";
+            btnSalesOfWeek.Size = new Size(240, 40);
+            btnSalesOfWeek.TabIndex = 12;
+            btnSalesOfWeek.Text = "Sales of Week";
+            btnSalesOfWeek.UseVisualStyleBackColor = true;
+            btnSalesOfWeek.Click += btnSalesOfWeek_Click;
+            // 
             // formMenuReports
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(537, 431);
+            Controls.Add(btnSalesOfWeek);
             Controls.Add(btnSalesPerYear);
             Controls.Add(btnSalesPerMonth);
             Controls.Add(button3);
@@ -122,5 +134,6 @@
         private Button button3;
         private Button btnSalesPerMonth;
         private Button btnSalesPerYear;
+        private Button btnSalesOfWeek;
     }
 }

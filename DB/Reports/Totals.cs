@@ -1,4 +1,5 @@
 ﻿using DataHandle.Reports;
+using System.Security.Principal;
 
 namespace DB.Reports
 {
@@ -97,6 +98,27 @@ namespace DB.Reports
 
             return sale_totals;
         }
+
+        public static List<TotalWeek> CalculateTotalWeek()
+        {
+            var salesPerDay = CalculateTotalSale();
+
+            List<TotalWeek> week_totals = new List<TotalWeek>();
+
+            int id = 1;
+            foreach (var wd in TotalWeek.GetDaysOfCurrentWeek())
+            {
+                var day = salesPerDay.FirstOrDefault(x => x.SaleDate == wd);
+                decimal total_week = (day!=null)?day.Total:0;
+                var week_day = new TotalWeek(id,wd, total_week);
+                id++;
+                week_totals.Add(week_day);
+            }
+
+            return week_totals;
+        }
+
+        
 
     }
 }

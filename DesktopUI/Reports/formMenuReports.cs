@@ -54,6 +54,15 @@ namespace DesktopUI.Reports
             formListar formListar = new formListar(typeof(TotalYear));
             formListar.Show();
         }
+
+        private void btnSalesOfWeek_Click(object sender, EventArgs e)
+        {
+            formListar formListar = new formListar(typeof(TotalWeek));
+            formListar.Show();
+        }
+
+
+
         private void formMenuReports_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)

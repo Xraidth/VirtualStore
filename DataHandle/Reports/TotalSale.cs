@@ -18,6 +18,9 @@ namespace DataHandle.Reports
                 SaleDate = saleDate;
                 Total = total;
         }
-        
+
+       
+
+      
     }
 }

@@ -125,6 +125,43 @@ namespace DesktopUI.Reports
 
                 plotView1.Model = model;
             }
+            else if (tipoDato == typeof(TotalWeek))
+            {
+                var model = new PlotModel { Title = "TotalWeek" };
+
+                var sale_totals = Totals.CalculateTotalWeek();
+
+
+
+                var points = sale_totals.Select(s =>
+                {
+                    DateTime firstDayOfWeek = TotalWeek.GenerateDay(s.WeekDay);
+                    return new DataPoint(DateTimeAxis.ToDouble(firstDayOfWeek), Convert.ToDouble(s.Total));
+                });
+
+
+                var lineSeries = new LineSeries
+                {
+                    ItemsSource = points,
+                    LabelFormatString = "{1}",
+                    Color = OxyColor.FromRgb(255, 0, 0)
+                };
+
+                model.Series.Add(lineSeries);
+
+                model.Axes.Add(new DateTimeAxis
+                {
+                    Position = AxisPosition.Bottom,
+                    Title = "Date",
+                    StringFormat = "dddd",
+                    IntervalType = DateTimeIntervalType.Days,
+                    MinorIntervalType = DateTimeIntervalType.Days,
+                    MinorStep = 1,
+                    MajorStep = 1
+                });
+
+                plotView1.Model = model;
+            }
         }
 
         private void formOxyplotLines_KeyDown(object sender, KeyEventArgs e)
