@@ -31,8 +31,13 @@
 
 <h4>Beta Version (Unstable)</h4>
 
-<p>Download the version 1.0.0.1: <a href="https://download848.mediafire.com/stuo1xtm4angH2WOYNBpoWbEUW83EyCI6OWw-mGHmkc9ti2yREAQamPVnat6BML6d95lLwntu2KL8BC_kBjguMSTsKsA2r-frp52y0O6zT55iUtZBuc9P14VsnFfsXE-2XtMiUqYLhbaopdC4i511QwGdTgFNFBiEOJhkXBeRJXkaQ/613w31l9a42pxhg/VirtualStore.Setup.exe">VirtualStore.exe</a>. <br></br>
+<p>Download the En version 1.0.0.1: <a href="https://download848.mediafire.com/stuo1xtm4angH2WOYNBpoWbEUW83EyCI6OWw-mGHmkc9ti2yREAQamPVnat6BML6d95lLwntu2KL8BC_kBjguMSTsKsA2r-frp52y0O6zT55iUtZBuc9P14VsnFfsXE-2XtMiUqYLhbaopdC4i511QwGdTgFNFBiEOJhkXBeRJXkaQ/613w31l9a42pxhg/VirtualStore.Setup.exe">VirtualStore.exe</a>. <br></br>
 Please note that this is a beta version and may contain bugs. Your feedback is valuable in helping me to improve the application.</p>
+
+<p>Download the ES version 1.0.0.1: <a href="https://download1323.mediafire.com/bd9civ8byevgcHERY5Nt5MEggrhBLHSeR5oIdLjJkjXGEwUfah87Tz10mYR5taJ8BTcheqMSkMCzGDxlxaSyATceZLdIuUcpI-FazTOT-n2W59BQ4PtGBGp_YOmeozIqx6JlaLyPkjDf_k513IgZrxbfoxn2VdoJgtKcTe_TJJwDvw/p6p3lf77cjsx8cn/VirtualStore.Setup.ES.exe">VirtualStore.exe</a>. <br></br>
+Please note that this is a beta version and may contain bugs. Your feedback is valuable in helping me to improve the application.</p>
+
+
 
 
 <h3>Contribution</h3>
